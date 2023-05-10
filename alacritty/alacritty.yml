@@ -11,3 +11,7 @@ font:
 
     # Point size of the font
     size: 14.0
+window:
+    dimensions:
+        columns: 300
+        lines: 300

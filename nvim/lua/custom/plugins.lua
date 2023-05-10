@@ -31,6 +31,7 @@ local plugins = {
     end,
     config = function(_, opts)
       require('rust-tools').setup(opts)
+      require("core.utils").load_mappings("rust_tools")
     end
   },
   {
