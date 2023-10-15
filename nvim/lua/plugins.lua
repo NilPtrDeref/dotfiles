@@ -33,6 +33,7 @@ return {
 	-- Fugitive
 	{"tpope/vim-fugitive"},
 
+    -- Golang
     { "ray-x/go.nvim",
         dependencies = {
             "ray-x/guihua.lua",
@@ -44,9 +45,23 @@ return {
         ft = {"go", 'gomod'},
         build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
     },
+
+    -- Autopairs (brackets, quotes, etc)
     {
         'windwp/nvim-autopairs',
         event = "InsertEnter",
         opts = {} -- this is equalent to setup({}) function
+    },
+
+    -- Which-Key
+    {
+        "folke/which-key.nvim",
+        event = "VeryLazy",
+        init = function()
+            vim.o.timeout = true
+            vim.o.timeoutlen = 300
+        end,
+        opts = {
+        },
     },
 }
