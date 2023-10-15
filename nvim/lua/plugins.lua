@@ -1,8 +1,9 @@
 return {
 	-- Colorscheme
-	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+	{"catppuccin/nvim", name = "catppuccin", priority = 1000},
 
 	-- LSP
+	{"VonHeikemen/lsp-zero.nvim"},
 	{"williamboman/mason.nvim"},
 	{"williamboman/mason-lspconfig.nvim"},
 	{"neovim/nvim-lspconfig"},
@@ -14,22 +15,21 @@ return {
 	{'rafamadriz/friendly-snippets'},
 
 	-- Telescope
-	{'nvim-telescope/telescope.nvim', tag = '0.1.4', dependencies = { 'nvim-lua/plenary.nvim' } },
+	{'nvim-telescope/telescope.nvim', tag = '0.1.4', dependencies = {'nvim-lua/plenary.nvim'}},
 
 	-- Treesitter
-	{ "nvim-treesitter/nvim-treesitter" },
-	{ "nvim-treesitter/playground" },
+	{"nvim-treesitter/nvim-treesitter"},
+	{"nvim-treesitter/playground"},
 
 	-- Copilot
-	{ "github/copilot.vim" },
+	{"github/copilot.vim"},
 
 	-- Harpoon
-	{ "ThePrimeagen/harpoon" },
+	{"ThePrimeagen/harpoon"},
 
 	-- Undotree
-	{ "mbbill/undotree" },
+	{"mbbill/undotree"},
 
 	-- Fugitive
-	{ "tpope/vim-fugitive" },
+	{"tpope/vim-fugitive"},
 }
-
