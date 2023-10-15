@@ -1,2 +1,2 @@
 -- Set Colorscheme
-vim.cmd.colorscheme "catppuccin-macchiato"
+vim.cmd.colorscheme "catppuccin-mocha" --"catppuccin-macchiato"
