@@ -1,3 +1,9 @@
+vim.filetype.add({
+    extension = {
+        templ = "templ",
+    },
+})
+
 local lsp_zero = require('lsp-zero')
 
 lsp_zero.on_attach(function(client, bufnr)
@@ -13,6 +19,7 @@ require('mason-lspconfig').setup({
 	'rust_analyzer',
 	'lua_ls',
 	'eslint',
+	'templ',
   },
   handlers = {
     lsp_zero.default_setup,

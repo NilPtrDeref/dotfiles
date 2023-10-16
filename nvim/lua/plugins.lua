@@ -20,6 +20,7 @@ return {
 	-- Treesitter
 	{"nvim-treesitter/nvim-treesitter"},
 	{"nvim-treesitter/playground"},
+	{"vrischmann/tree-sitter-templ"},
 
 	-- Copilot
 	{"github/copilot.vim"},
