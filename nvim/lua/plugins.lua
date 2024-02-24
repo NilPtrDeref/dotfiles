@@ -34,6 +34,8 @@ return {
 	-- Fugitive
 	{"tpope/vim-fugitive"},
 
+	{"ziglang/zig.vim"},
+
     -- Golang
     { "ray-x/go.nvim",
         dependencies = {
