@@ -20,7 +20,8 @@ require('mason-lspconfig').setup({
 	'lua_ls',
 	'eslint',
 	'templ',
-	'zls'
+	'zls',
+	'clangd'
   },
   handlers = {
     lsp_zero.default_setup,

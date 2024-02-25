@@ -30,6 +30,8 @@ vim.keymap.set("n", "<leader>f=", vim.lsp.buf.format, { desc = "Format current f
 -- Quickfix navigation
 vim.keymap.set("n", "<leader>k", "<cmd>cnext<CR>zz", { desc = "Go to next quickfix" })
 vim.keymap.set("n", "<leader>j", "<cmd>cprev<CR>zz", { desc = "Go to previous quickfix" })
+vim.keymap.set("n", "<leader>h", vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
+vim.keymap.set("n", "<leader>l", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
 
 -- Find and replace in file
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Find and replace current word in file" })
