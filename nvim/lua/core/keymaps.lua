@@ -28,10 +28,24 @@ vim.keymap.set({"n", "v"}, "<leader>d", [["_d]], { desc = "Delete to black hole 
 vim.keymap.set("n", "<leader>f=", vim.lsp.buf.format, { desc = "Format current file" })
 
 -- Quickfix navigation
+vim.keymap.set("n", "<leader>q", "<cmd>cclose<CR>", { desc = "Close quickfix" })
 vim.keymap.set("n", "<leader>k", "<cmd>cnext<CR>zz", { desc = "Go to next quickfix" })
 vim.keymap.set("n", "<leader>j", "<cmd>cprev<CR>zz", { desc = "Go to previous quickfix" })
 vim.keymap.set("n", "<leader>h", vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
 vim.keymap.set("n", "<leader>l", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
+
+-- LSP
+vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
+vim.keymap.set("n", "gf", vim.lsp.buf.declaration, { desc = "Go to declaration" })
+vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { desc = "Go to implementation" })
+vim.keymap.set("n", "gt", vim.lsp.buf.references, { desc = "Go to references" })
+vim.keymap.set("n", "gh", vim.lsp.buf.hover, { desc = "Show hover" })
+vim.keymap.set("n", "gr", vim.lsp.buf.rename, { desc = "Rename" })
+vim.keymap.set("n", "ga", vim.lsp.buf.code_action, { desc = "Code action" })
+vim.keymap.set("n", "gsh", vim.lsp.buf.signature_help, { desc = "Signature help" })
+vim.keymap.set("n", "gsd", vim.lsp.buf.type_definition, { desc = "Type definition" })
+vim.keymap.set("n", "gn", "<C-i>", { desc = "Goto next" })
+vim.keymap.set("n", "gp", "<C-o>", { desc = "Goto previous" })
 
 -- Find and replace in file
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Find and replace current word in file" })
