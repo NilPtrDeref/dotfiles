@@ -19,6 +19,7 @@ return {
 
 	-- Treesitter
 	{"nvim-treesitter/nvim-treesitter"},
+	{"nvim-treesitter/nvim-treesitter-context"},
 	{"nvim-treesitter/playground"},
 	{"vrischmann/tree-sitter-templ"},
 
