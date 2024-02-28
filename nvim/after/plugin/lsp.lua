@@ -39,6 +39,10 @@ local mapping = {
 }
 
 cmp.setup({
+	completion = {
+		completeopt = 'noselect',
+	},
+	preselect = cmp.PreselectMode.None,
 	sources = {
 		{name = "copilot", group_index = 2},
 		{name = "nvim_lsp", group_index = 2},
