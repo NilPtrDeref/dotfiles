@@ -29,6 +29,7 @@ require('mason-lspconfig').setup({
 })
 
 
+local luasnip = require('luasnip')
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
 local mapping = {
@@ -39,20 +40,41 @@ local mapping = {
 }
 
 cmp.setup({
+	snippet = {
+		expand = function(args)
+			luasnip.lsp_expand(args.body)
+		end
+	},
 	completion = {
-		completeopt = 'noselect',
+		completeopt = 'noselect,menu,menuone',
 	},
 	preselect = cmp.PreselectMode.None,
 	sources = {
-		{name = "copilot", group_index = 2},
-		{name = "nvim_lsp", group_index = 2},
+		{name = "nvim_lsp", max_item_count = 10, group_index = 2},
 		{name = "path", group_index = 2},
+		{name = "copilot", group_index = 2},
 		{name = "luasnip", group_index = 2},
+		{name = "buffer", max_item_count = 5, group_index = 2},
 	},
     window = {
       completion = cmp.config.window.bordered(),
       documentation = cmp.config.window.bordered(),
     },
+	formatting = {
+		fields = {'menu', 'abbr', 'kind'},
+		format = function(entry, item)
+			local menu_icon = {
+				nvim_lsp = "",
+				path = "",
+				copilot = "",
+				luasnip = "",
+				buffer = "﬘",
+			}
+
+			item.menu = menu_icon[entry.source.name]
+			return item
+		end,
+	},
 	mapping = mapping,
 })
 
