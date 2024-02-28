@@ -35,6 +35,10 @@ return {
 	-- Fugitive
 	{"tpope/vim-fugitive"},
 
+	-- Commentary
+	{"tpope/vim-commentary"},
+
+	-- Zig
 	{"ziglang/zig.vim"},
 
     -- Golang
@@ -43,7 +47,9 @@ return {
             "ray-x/guihua.lua",
         },
         config = function()
-            require("go").setup()
+            require("go").setup({
+				mat_line_len = 500,
+			})
         end,
         event = {"CmdlineEnter"},
         ft = {"go", 'gomod'},
