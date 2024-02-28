@@ -50,16 +50,21 @@ cmp.setup({
 	},
 	preselect = cmp.PreselectMode.None,
 	sources = {
-		{name = "nvim_lsp", max_item_count = 10, group_index = 2},
+		{name = "nvim_lsp", max_item_count = 10, group_index = 2, priority = 100},
 		{name = "path", group_index = 2},
-		{name = "copilot", group_index = 2},
 		{name = "luasnip", group_index = 2},
 		{name = "buffer", max_item_count = 5, group_index = 2},
+		{name = "copilot", group_index = 2},
 	},
     window = {
       completion = cmp.config.window.bordered(),
       documentation = cmp.config.window.bordered(),
     },
+	sorting = {
+		comparators = {
+			cmp.config.compare.score,
+		},
+	},
 	formatting = {
 		fields = {'menu', 'abbr', 'kind'},
 		format = function(entry, item)
