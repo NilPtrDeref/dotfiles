@@ -2,6 +2,20 @@ return {
 	-- Colorscheme
 	{"catppuccin/nvim", name = "catppuccin", priority = 1000},
 
+	-- Copilot
+	{
+	  "zbirenbaum/copilot.lua",
+	  cmd = "Copilot",
+	  build = ":Copilot auth",
+	},
+
+	{"zbirenbaum/copilot-cmp",
+	  dependencies = "copilot.lua",
+	  config = function ()
+		  require("copilot_cmp").setup()
+	  end
+	},
+
 	-- LSP
 	{"VonHeikemen/lsp-zero.nvim"},
 	{"williamboman/mason.nvim"},
@@ -22,13 +36,6 @@ return {
 	{"nvim-treesitter/nvim-treesitter-context"},
 	{"nvim-treesitter/playground"},
 	{"vrischmann/tree-sitter-templ"},
-
-	-- Copilot
-	{
-	  "zbirenbaum/copilot.lua",
-	  cmd = "Copilot",
-	  build = ":Copilot auth",
-	},
 
 	-- Harpoon
 	{"ThePrimeagen/harpoon"},
