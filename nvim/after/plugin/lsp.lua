@@ -50,7 +50,7 @@ cmp.setup({
 	},
 	preselect = cmp.PreselectMode.None,
 	sources = {
-		{name = "nvim_lsp", max_item_count = 10, group_index = 2, priority = 100},
+		{name = "nvim_lsp", group_index = 2, priority = 100},
 		{name = "path", group_index = 2},
 		{name = "luasnip", group_index = 2},
 		{name = "buffer", max_item_count = 5, group_index = 2},

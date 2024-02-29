@@ -59,7 +59,7 @@ return {
         },
         config = function()
             require("go").setup({
-				mat_line_len = 500,
+				max_line_len = 500,
 			})
         end,
         event = {"CmdlineEnter"},
