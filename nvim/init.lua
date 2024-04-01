@@ -17,23 +17,5 @@ vim.opt.rtp:prepend(lazypath)
 --    :Lazy update
 require('lazy').setup {
   'tpope/vim-sleuth',
-  { 'numToStr/Comment.nvim', opts = {} },
-
-  { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
-
-  {
-    'echasnovski/mini.nvim',
-    config = function()
-      require('mini.ai').setup { n_lines = 500 }
-      local statusline = require 'mini.statusline'
-      statusline.setup()
-
-      ---@diagnostic disable-next-line: duplicate-set-field
-      statusline.section_location = function()
-        return '%2l:%-2v'
-      end
-    end,
-  },
-
   { import = 'core.plugins' },
 }
