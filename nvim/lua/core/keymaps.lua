@@ -5,6 +5,12 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
+
+-- Quickfix
+vim.keymap.set('n', '<A-[>', '<cmd>cprevious<CR>', { desc = 'Go to previous [Q]uickfix' })
+vim.keymap.set('n', '<A-]>', '<cmd>cnext<CR>', { desc = 'Go to next [Q]uickfix' })
+vim.keymap.set('n', '<leader>qp', '<cmd>cprevious<CR>', { desc = 'Go to previous [Q]uickfix' })
+vim.keymap.set('n', '<leader>qn', '<cmd>cnext<CR>', { desc = 'Go to next [Q]uickfix' })
 vim.keymap.set('n', '<leader>qo', vim.diagnostic.setloclist, { desc = '[O]pen diagnostic [Q]uickfix list' })
 vim.keymap.set('n', '<leader>qc', '<cmd>cclose<CR>', { desc = '[C]lose diagnostic [Q]uickfix list' })
 
