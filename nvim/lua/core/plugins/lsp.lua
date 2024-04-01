@@ -139,7 +139,7 @@ return {
       },
       formatters = {
         clang_format = {
-          args = { '-style=llvm' },
+          args = { '-style=chromium' },
         },
       },
     },
