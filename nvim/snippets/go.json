@@ -1,0 +1,17 @@
+{
+  "if error return": {
+    "prefix": "ierr",
+    "body": "if err != nil {\n\treturn err\n}",
+    "description": "If an error exists, return it"
+  },
+  "if condition error": {
+    "prefix": "ierrn",
+    "body": "if ${1:condition} {\n\treturn errors.New(\"${2:value}\")\n}",
+    "description": "If some condition, return a new error"
+  },
+  "if error join error": {
+    "prefix": "ierrjn",
+    "body": "if err != nil {\n\treturn errors.Join(errors.New(\"${1:value}\"), err)\n}",
+    "description": "If an error exists, return a join with new error"
+  }
+}
