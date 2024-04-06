@@ -17,5 +17,6 @@ vim.opt.rtp:prepend(lazypath)
 --    :Lazy update
 require('lazy').setup {
   'tpope/vim-sleuth',
+  'cohama/lexima.vim',
   { import = 'core.plugins' },
 }
