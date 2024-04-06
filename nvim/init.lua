@@ -17,6 +17,6 @@ vim.opt.rtp:prepend(lazypath)
 --    :Lazy update
 require('lazy').setup {
   'tpope/vim-sleuth',
-  'cohama/lexima.vim',
+  { 'windwp/nvim-autopairs', event = 'InsertEnter', config = true },
   { import = 'core.plugins' },
 }
