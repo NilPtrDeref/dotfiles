@@ -20,11 +20,18 @@ vim.opt.inccommand = 'split'
 vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 vim.opt.hlsearch = true
+
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = false
 vim.opt.smartindent = true
+
+vim.cmd 'autocmd FileType c setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab'
+vim.cmd 'autocmd FileType h setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab'
+vim.cmd 'autocmd FileType cpp setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab'
+vim.cmd 'autocmd FileType hpp setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab'
+
 vim.opt.wrap = false
 vim.opt.swapfile = false
 vim.opt.backup = false
