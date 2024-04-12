@@ -63,7 +63,10 @@ return {
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
       local servers = {
-        clangd = {},
+        clangd = {
+          capabilities = capabilities,
+          filetypes = { 'c', 'h' },
+        },
         gopls = {},
         rust_analyzer = {},
         tsserver = {},
@@ -140,6 +143,7 @@ return {
       formatters_by_ft = {
         lua = { 'stylua' },
         c = { 'clang-format' },
+        h = { 'clang-format' },
       },
       formatters = {
         clang_format = {
@@ -148,7 +152,6 @@ return {
       },
     },
     dependencies = {
-      'p00f/clangd_extensions.nvim',
       'mason.nvim',
     },
   },
