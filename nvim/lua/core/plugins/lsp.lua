@@ -28,7 +28,7 @@ return {
           vim.keymap.set('n', '<leader>lr', '<cmd>LspRestart<CR>', { silent = true, desc = '[L]sp [R]estart' })
 
           local border = 'single'
-          vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = border, max_width = 100, max_height = 30 })
+          vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = border, max_width = 120, max_height = 30 })
           vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border, max_width = 100, max_height = 30 })
           vim.diagnostic.config { float = { border = border } }
           require('lspconfig.ui.windows').default_options = { border = border }
