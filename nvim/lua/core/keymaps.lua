@@ -13,6 +13,8 @@ vim.keymap.set('n', '<leader>qp', '<cmd>cprevious<CR>', { desc = 'Go to previous
 vim.keymap.set('n', '<leader>qn', '<cmd>cnext<CR>', { desc = 'Go to next [Q]uickfix' })
 vim.keymap.set('n', '<leader>qo', vim.diagnostic.setloclist, { desc = '[O]pen diagnostic [Q]uickfix list' })
 vim.keymap.set('n', '<leader>qc', '<cmd>cclose<CR>', { desc = '[C]lose diagnostic [Q]uickfix list' })
+vim.keymap.set('n', '<C-j>', '<cmd>cnext<CR>', { desc = 'Go to next Quickfix' })
+vim.keymap.set('n', '<C-k>', '<cmd>cprevious<CR>', { desc = 'Go to previous Quickfix' })
 
 -- Disable arrow keys in normal mode
 vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
@@ -23,8 +25,6 @@ vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 -- Split navigation
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
-vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
-vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 vim.keymap.set('n', '<C-down>', '<C-w>-', { desc = 'Shrink window vertically' })
 vim.keymap.set('n', '<C-up>', '<C-w>+', { desc = 'Grow window vertically' })
 
