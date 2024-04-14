@@ -1,14 +1,13 @@
 return {
   { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
+    opts = {
+      inlay_hints = { enabled = true },
+    },
     dependencies = {
-      -- Automatically install LSPs and related tools to stdpath for neovim
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
-
-      -- Useful status updates for LSP.
-      -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
       { 'j-hui/fidget.nvim', opts = {} },
     },
     config = function()
@@ -18,6 +17,11 @@ return {
           local map = function(keys, func, desc)
             vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
           end
+
+          local toggle_inlay = function()
+            vim.lsp.inlay_hint.enable(0, not vim.lsp.inlay_hint.is_enabled())
+          end
+          vim.keymap.set('n', '<leader>li', toggle_inlay, { desc = 'Toggle [I]nlay' })
 
           local opensig = function()
             local cmp = require 'cmp'
@@ -60,73 +64,91 @@ return {
         end,
       })
 
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
-      local servers = {
-        clangd = {
-          capabilities = capabilities,
-          filetypes = { 'c', 'h' },
-        },
-        gopls = {},
-        rust_analyzer = {},
-        tsserver = {},
-        html = {
-          -- on_attach = on_attach,
-          capabilities = capabilities,
-          filetypes = { 'html', 'templ' },
-        },
-        htmx = {
-          -- on_attach = on_attach,
-          capabilities = capabilities,
-          filetypes = { 'html', 'templ' },
-        },
-        tailwindcss = {
-          -- on_attach = on_attach,
-          capabilities = capabilities,
-          filetypes = { 'html', 'templ', 'javascript', 'typescript' },
-          init_options = { userLanguages = { templ = 'html' } },
-        },
-        lua_ls = {
-          settings = {
-            Lua = {
-              runtime = { version = 'LuaJIT' },
-              workspace = {
-                checkThirdParty = false,
-                library = {
-                  '${3rd}/luv/library',
-                  unpack(vim.api.nvim_get_runtime_file('', true)),
-                },
-              },
-              completion = {
-                callSnippet = 'Replace',
-              },
-            },
-          },
-        },
-      }
-
-      -- Ensure the servers and tools above are installed
-      --    :Mason
-      --  You can press `g?` for help in this menu
-      require('mason').setup()
-
-      local ensure_installed = vim.tbl_keys(servers or {})
-      vim.list_extend(ensure_installed, {
-        'stylua',
+      local ensure_installed = {
         'clangd',
+        'gopls',
+        'rust_analyzer',
+        'tsserver',
+        'html',
+        'htmx',
+        'tailwindcss',
+        'lua_ls',
+      }
+      require('mason').setup { ensure_installed = ensure_installed }
+      require('mason-lspconfig').setup { ensure_installed = ensure_installed }
+      ensure_installed = vim.tbl_deep_extend('force', ensure_installed, {
+        'stylua',
         'clang-format',
         'codelldb',
         'delve',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
-      require('mason-lspconfig').setup {
-        handlers = {
-          function(server_name)
-            local server = servers[server_name] or {}
-            server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-            require('lspconfig')[server_name].setup(server)
-          end,
+      local lsp = require 'lspconfig'
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+      local on_attach = function(client, bufnr)
+        vim.lsp.inlay_hint.enable(bufnr, true)
+      end
+
+      lsp.gopls.setup {
+        on_attach = on_attach,
+        inlay_hints = { enabled = true },
+        settings = {
+          gopls = {
+            ['ui.inlayhint.hints'] = {
+              assignVariableTypes = true,
+              compositeLiteralFields = true,
+              constantValues = true,
+              parameterNames = true,
+              rangeVariableTypes = true,
+            },
+          },
+        },
+      }
+      lsp.clangd.setup {
+        on_attach = on_attach,
+        capabilities = capabilities,
+        filetypes = { 'c', 'h' },
+      }
+      lsp.rust_analyzer.setup {
+        on_attach = on_attach,
+      }
+      lsp.tsserver.setup {
+        on_attach = on_attach,
+      }
+      lsp.html.setup {
+        on_attach = on_attach,
+        capabilities = capabilities,
+        filetypes = { 'html', 'templ' },
+      }
+      lsp.htmx.setup {
+        on_attach = on_attach,
+        capabilities = capabilities,
+        filetypes = { 'html', 'templ' },
+      }
+      lsp.tailwindcss.setup {
+        on_attach = on_attach,
+        capabilities = capabilities,
+        filetypes = { 'html', 'templ', 'javascript', 'typescript' },
+        init_options = { userLanguages = { templ = 'html' } },
+      }
+      lsp.lua_ls.setup {
+        on_attach = on_attach,
+        settings = {
+          Lua = {
+            runtime = { version = 'LuaJIT' },
+            workspace = {
+              checkThirdParty = false,
+              library = {
+                '${3rd}/luv/library',
+                unpack(vim.api.nvim_get_runtime_file('', true)),
+              },
+            },
+            completion = {
+              callSnippet = 'Replace',
+            },
+          },
         },
       }
     end,
@@ -150,9 +172,6 @@ return {
           args = { '-style=webkit' },
         },
       },
-    },
-    dependencies = {
-      'mason.nvim',
     },
   },
 }

@@ -5,7 +5,11 @@ return {
       'ray-x/guihua.lua',
     },
     config = function()
-      require('go').setup {}
+      require('go').setup {
+        lsp_inlay_hints = {
+          enable = false,
+        },
+      }
 
       -- Run gofmt on save
       local format_sync_grp = vim.api.nvim_create_augroup('GoFormat', {})
