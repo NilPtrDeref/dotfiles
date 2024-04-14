@@ -113,6 +113,33 @@ return {
       }
       lsp.rust_analyzer.setup {
         on_attach = on_attach,
+        settings = {
+          ['rust-analyzer'] = {
+            imports = {
+              granularity = {
+                group = 'module',
+              },
+              prefix = 'self',
+            },
+            cargo = {
+              buildScripts = {
+                enable = true,
+              },
+            },
+            procMacro = {
+              enable = true,
+            },
+            add_return_type = {
+              enable = true,
+            },
+            inlayHints = {
+              enable = true,
+              showParameterNames = true,
+              parameterHintsPrefix = '<- ',
+              otherHintsPrefix = '=> ',
+            },
+          },
+        },
       }
       lsp.tsserver.setup {
         on_attach = on_attach,
