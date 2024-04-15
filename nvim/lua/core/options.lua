@@ -31,7 +31,7 @@ vim.cmd 'autocmd FileType c setlocal tabstop=2 softtabstop=2 shiftwidth=2 expand
 vim.cmd 'autocmd FileType h setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab'
 vim.cmd 'autocmd FileType cpp setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab'
 vim.cmd 'autocmd FileType hpp setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab'
-vim.cmd 'autocmd FileType hs setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab'
+vim.cmd 'autocmd FileType haskell setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab'
 
 vim.opt.wrap = false
 vim.opt.swapfile = false
