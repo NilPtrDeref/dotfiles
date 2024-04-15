@@ -73,6 +73,7 @@ return {
         'htmx',
         'tailwindcss',
         'lua_ls',
+        'hls',
       }
       require('mason').setup { ensure_installed = ensure_installed }
       require('mason-lspconfig').setup { ensure_installed = ensure_installed }
@@ -177,6 +178,9 @@ return {
             },
           },
         },
+      }
+      lsp.hls.setup {
+        on_attach = on_attach,
       }
     end,
   },
