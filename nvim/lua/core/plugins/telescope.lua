@@ -41,6 +41,7 @@ return {
       vim.keymap.set('n', '<leader>scc', builtin.colorscheme, { desc = '[S]earch [C]olorscheme' })
       vim.keymap.set('n', '<leader>scs', builtin.commands, { desc = '[S]earch [C]ommand[s]' })
       vim.keymap.set('n', '<leader>sch', builtin.command_history, { desc = '[S]earch [C]ommand [H]istory' })
+      vim.keymap.set('n', '<leader>scr', builtin.colorscheme, { desc = '[S]earch [C]olo[R]schemes' })
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
       vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
