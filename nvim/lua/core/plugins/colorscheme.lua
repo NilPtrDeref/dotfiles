@@ -1,6 +1,6 @@
 return {
   {
-    'EdenEast/nightfox.nvim',
+    'stevearc/nightfox.nvim',
     dependencies = {
       'sainnhe/sonokai',
       'sainnhe/everforest',
@@ -16,7 +16,7 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'nightfox'
+      vim.cmd.colorscheme 'duskfox'
       vim.cmd.hi 'Comment gui=none'
     end,
   },
