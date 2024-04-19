@@ -166,6 +166,9 @@ return {
         lua = { 'stylua' },
         c = { 'clang-format' },
         h = { 'clang-format' },
+        javascript = { 'prettier' },
+        typescript = { 'prettier' },
+        svelte = { 'prettier' },
       },
       formatters = {
         clang_format = {
