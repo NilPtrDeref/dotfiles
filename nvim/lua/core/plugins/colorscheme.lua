@@ -1,22 +1,22 @@
 return {
   {
-    'sainnhe/everforest',
+    'EdenEast/nightfox.nvim',
     dependencies = {
+      'sainnhe/sonokai',
+      'sainnhe/everforest',
       'catppuccin/nvim',
       'folke/tokyonight.nvim',
       'rose-pine/neovim',
       'rebelot/kanagawa.nvim',
       'morhetz/gruvbox',
-      'EdenEast/nightfox.nvim',
       'sainnhe/gruvbox-material',
-      'sainnhe/sonokai',
       'AlexvZyl/nordic.nvim',
       'doums/darcula',
     },
     lazy = false,
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'everforest'
+      vim.cmd.colorscheme 'nightfox'
       vim.cmd.hi 'Comment gui=none'
     end,
   },
