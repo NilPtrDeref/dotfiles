@@ -18,8 +18,10 @@ return {
           min_width = 20,
           default_direction = 'prefer_left',
         },
+        autojump = true,
+        close_on_select = true,
       }
-      vim.keymap.set('n', '<leader>a', '<cmd>AerialToggle!<CR>')
+      vim.keymap.set('n', '<C-a>', '<cmd>AerialToggle<CR>')
     end,
   },
 }
