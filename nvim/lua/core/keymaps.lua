@@ -40,5 +40,5 @@ vim.keymap.set('n', 'n', 'nzzzv', { desc = 'Move to next search match' })
 vim.keymap.set('n', 'N', 'Nzzzv', { desc = 'Move to previous search match' })
 
 -- Terminal
-vim.keymap.set('n', '<C-t>', '<cmd>15split term://fish<CR>', { desc = 'Open a terminal under the current window' })
+-- vim.keymap.set('n', '<C-t>', '<cmd>15split term://fish<CR>', { desc = 'Open a terminal under the current window' })
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
