@@ -64,9 +64,10 @@ return {
         window = {
           hover = cmp.config.window.bordered(),
           completion = cmp.config.window.bordered(),
-          documentation = cmp.config.window.bordered(),
+          documentation = cmp.config.disable,
         },
-        completion = { completeopt = 'noselect,menu,menuone,noinsert' },
+        completion = { completeopt = 'menu,menuone,noinsert,noselect,preview' },
+        preselect = cmp.PreselectMode.None,
 
         mapping = cmp.mapping.preset.insert {
           ['<C-n>'] = cmp.mapping.select_next_item(),
