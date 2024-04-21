@@ -16,7 +16,7 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'duskfox'
+      vim.cmd.colorscheme 'sonokai'
       vim.cmd.hi 'Comment gui=none'
     end,
   },
