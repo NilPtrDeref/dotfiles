@@ -13,6 +13,14 @@ return {
           end,
           default_settings = {
             ['rust-analyzer'] = {
+              -- cargo = {
+              --   buildScripts = {
+              --     enable = false,
+              --   },
+              -- },
+              -- procMacro = {
+              --   enable = false,
+              -- },
               workspace = {
                 symbol = {
                   search = {
