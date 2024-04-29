@@ -109,7 +109,6 @@ return {
       lsp.clangd.setup {
         on_attach = on_attach,
         capabilities = capabilities,
-        filetypes = { 'c', 'h' },
       }
       lsp.tsserver.setup {
         on_attach = on_attach,

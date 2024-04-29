@@ -45,7 +45,7 @@ vim.cmd 'autocmd BufEnter * set formatoptions-=cro'
 vim.cmd 'autocmd BufEnter * setlocal formatoptions-=cro'
 
 -- Set h files a c filetype so clangd works in them
-vim.g.c_syntax_for_h = true
+-- vim.g.c_syntax_for_h = true
 
 -- Set up templ
 vim.filetype.add { extension = { templ = 'templ' } }
