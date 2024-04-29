@@ -29,8 +29,8 @@ vim.opt.smartindent = true
 
 vim.cmd 'autocmd FileType c setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab'
 vim.cmd 'autocmd FileType h setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab'
-vim.cmd 'autocmd FileType cpp setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab'
-vim.cmd 'autocmd FileType hpp setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab'
+vim.cmd 'autocmd FileType cpp setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab'
+vim.cmd 'autocmd FileType hpp setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab'
 vim.cmd 'autocmd FileType haskell setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab'
 vim.cmd 'autocmd FileType javascript setlocal tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab'
 vim.cmd 'autocmd FileType typescript setlocal tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab'
