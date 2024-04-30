@@ -49,6 +49,7 @@ return {
           map('K', vim.lsp.buf.hover, 'Hover Documentation')
           map('<C-S>', vim.lsp.buf.signature_help, 'Signature Documentation')
           map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+          map('<leader>cd', vim.diagnostic.open_float, { desc = 'Open diagnostic in hover' })
           local client = vim.lsp.get_client_by_id(event.data.client_id)
           if client and client.server_capabilities.documentHighlightProvider then
             vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
