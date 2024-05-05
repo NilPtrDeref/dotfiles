@@ -92,6 +92,7 @@ return {
       end
 
       lsp.gopls.setup {
+        capabilities = capabilities,
         on_attach = on_attach,
         inlay_hints = { enabled = true },
         settings = {
@@ -112,6 +113,12 @@ return {
       }
       lsp.tsserver.setup {
         on_attach = on_attach,
+        capabilities = capabilities,
+      }
+      lsp.zls.setup {
+        on_attach = on_attach,
+        capabilities = capabilities,
+        cmd = { 'zls' },
       }
       lsp.html.setup {
         on_attach = on_attach,
@@ -131,6 +138,7 @@ return {
       }
       lsp.lua_ls.setup {
         on_attach = on_attach,
+        capabilities = capabilities,
         settings = {
           Lua = {
             runtime = { version = 'LuaJIT' },
