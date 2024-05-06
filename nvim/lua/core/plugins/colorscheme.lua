@@ -16,7 +16,7 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'catppuccin-frappe'
+      vim.cmd.colorscheme 'nightfox'
       -- vim.opt.background = 'light'
       vim.cmd.hi 'Comment gui=none'
     end,
