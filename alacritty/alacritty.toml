@@ -11,3 +11,6 @@ bold_italic = { "family" = "JetbrainsMonoNL Nerd Font Propo", style = "Bold Ital
 
 [mouse]
 hide_when_typing = true
+
+[env]
+term = "xterm-256color"
