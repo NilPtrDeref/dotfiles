@@ -36,7 +36,9 @@ vim.cmd 'autocmd FileType javascript setlocal tabstop=2 softtabstop=2 shiftwidth
 vim.cmd 'autocmd FileType typescript setlocal tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab'
 vim.cmd 'autocmd FileType svelte setlocal tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab'
 
-vim.opt.wrap = false
+vim.opt.wrap = true
+-- vim.opt.wrap = false
+
 vim.opt.swapfile = false
 vim.opt.backup = false
 

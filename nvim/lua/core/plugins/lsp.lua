@@ -69,6 +69,7 @@ return {
         'clangd',
         'gopls',
         'tsserver',
+        'svelte',
         'html',
         'htmx',
         'tailwindcss',
@@ -112,6 +113,10 @@ return {
         capabilities = capabilities,
       }
       lsp.tsserver.setup {
+        on_attach = on_attach,
+        capabilities = capabilities,
+      }
+      lsp.svelte.setup {
         on_attach = on_attach,
         capabilities = capabilities,
       }
