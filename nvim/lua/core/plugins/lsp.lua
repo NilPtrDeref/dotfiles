@@ -1,4 +1,40 @@
 return {
+  {
+    'nvimdev/lspsaga.nvim',
+    config = function()
+      require('lspsaga').setup {
+        lightbulb = {
+          enable = false,
+        },
+        outline = {
+          layout = 'float',
+          close_after_jump = true,
+          keys = {
+            toggle_or_jump = '<CR>',
+          },
+        },
+        finder = {
+          max_height = 0.6,
+          keys = {
+            vsplit = 'v',
+            toggle_or_open = '<CR>',
+          },
+        },
+        callhierarchy = {
+          max_height = 0.6,
+          keys = {
+            vsplit = 'v',
+            edit = '<CR>',
+          },
+        },
+      }
+    end,
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter', -- optional
+      'nvim-tree/nvim-web-devicons', -- optional
+      'neovim/nvim-lspconfig',
+    },
+  },
   { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     opts = {
@@ -37,19 +73,33 @@ return {
           vim.diagnostic.config { float = { border = border } }
           require('lspconfig.ui.windows').default_options = { border = border }
 
-          map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
-          map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+          -- Jumps
+          map('gd', '<cmd>Lspsaga goto_definition<CR>', '[G]oto [D]efinition')
+          map('gtd', '<cmd>Lspsaga goto_type_definition<CR>', '[G]oto [T]ype definition')
+          map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+          map('<leader>cD', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
+          map('gr', '<cmd>Lspsaga finder tyd+ref+imp+def<CR>', '[G]oto [R]eferences')
+          map('gi', '<cmd>Lspsaga incoming_calls<CR>', '[G]oto [I]ncoming Calls')
+          map('go', '<cmd>Lspsaga outgoing_calls<CR>', '[G]oto [O]utgoing Calls')
           map('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
-          map('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
+
+          -- Search
           map('<leader>wds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
           map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+          map('<C-a>', '<cmd>Lspsaga outline<CR>', 'Toggle Outline')
+
+          -- Actions
           map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
           map('<leader>rl', '<cmd>LspRestart<CR>', '[R]estart [L]SP')
-          map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
-          map('K', vim.lsp.buf.hover, 'Hover Documentation')
+
+          -- Hovers
+          map('<leader>ca', '<cmd>Lspsaga code_action<CR>', '[C]ode [A]ction')
+          map('<leader>cd', '<cmd>Lspsaga peek_definition<CR>', '[C]ode [D]efinition')
+          map('<leader>ct', '<cmd>Lspsaga peek_type_definition<CR>', '[C]ode [T]ype definition')
+          map('K', '<cmd>Lspsaga hover_doc<CR>', 'Hover Documentation')
           map('<C-S>', vim.lsp.buf.signature_help, 'Signature Documentation')
-          map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-          map('<leader>cd', vim.diagnostic.open_float, 'Open diagnostic in hover')
+          map('<leader>D', vim.diagnostic.open_float, 'Open diagnostic in hover')
+
           local client = vim.lsp.get_client_by_id(event.data.client_id)
           if client and client.server_capabilities.documentHighlightProvider then
             vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
