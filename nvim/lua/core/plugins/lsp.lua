@@ -98,7 +98,7 @@ return {
           map('<leader>ct', '<cmd>Lspsaga peek_type_definition<CR>', '[C]ode [T]ype definition')
           map('K', '<cmd>Lspsaga hover_doc<CR>', 'Hover Documentation')
           map('<C-S>', vim.lsp.buf.signature_help, 'Signature Documentation')
-          map('<leader>D', vim.diagnostic.open_float, 'Open diagnostic in hover')
+          map('<leader>d', vim.diagnostic.open_float, 'Open diagnostic in hover')
 
           local client = vim.lsp.get_client_by_id(event.data.client_id)
           if client and client.server_capabilities.documentHighlightProvider then
