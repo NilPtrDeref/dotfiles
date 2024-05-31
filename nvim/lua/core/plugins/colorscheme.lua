@@ -16,7 +16,7 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'nightfox'
+      vim.cmd.colorscheme 'everforest'
       -- vim.opt.background = 'light'
       vim.cmd.hi 'Comment gui=none'
     end,
