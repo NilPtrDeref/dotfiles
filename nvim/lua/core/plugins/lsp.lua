@@ -215,6 +215,7 @@ return {
 
   { -- Autoformat
     'stevearc/conform.nvim',
+    version = 'v5.7.0',
     opts = {
       notify_on_error = false,
       format_on_save = {
