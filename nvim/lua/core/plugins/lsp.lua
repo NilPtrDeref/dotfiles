@@ -165,6 +165,7 @@ return {
       lsp.tsserver.setup {
         on_attach = on_attach,
         capabilities = capabilities,
+        root_dir = require('lspconfig.util').root_pattern '.git',
       }
       lsp.svelte.setup {
         on_attach = on_attach,
