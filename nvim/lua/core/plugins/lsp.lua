@@ -89,7 +89,7 @@ return {
           map('<C-a>', '<cmd>Lspsaga outline<CR>', 'Toggle Outline')
 
           -- Actions
-          map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
+          map('<leader>rn', '<cmd>Lspsaga rename<CR>', '[R]e[n]ame')
           map('<leader>rl', '<cmd>LspRestart<CR>', '[R]estart [L]SP')
 
           -- Hovers
@@ -132,6 +132,7 @@ return {
         'clang-format',
         'codelldb',
         'delve',
+        'eslint_d',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -166,6 +167,10 @@ return {
         on_attach = on_attach,
         capabilities = capabilities,
         root_dir = require('lspconfig.util').root_pattern '.git',
+      }
+      lsp['eslint_d'].setup {
+        on_attach = on_attach,
+        capabilities = capabilities,
       }
       lsp.svelte.setup {
         on_attach = on_attach,
