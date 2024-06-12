@@ -120,7 +120,6 @@ return {
         'gopls',
         'tsserver',
         'svelte',
-        'css-lsp',
         'html',
         'htmx',
         'tailwindcss',
@@ -177,11 +176,6 @@ return {
         cmd = { 'zls' },
       }
       lsp.html.setup {
-        on_attach = on_attach,
-        capabilities = capabilities,
-        filetypes = { 'html', 'templ', 'svelte' },
-      }
-      lsp['css-lsp'].setup {
         on_attach = on_attach,
         capabilities = capabilities,
         filetypes = { 'html', 'templ', 'svelte' },
