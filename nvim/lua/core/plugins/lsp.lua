@@ -16,14 +16,20 @@ return {
         finder = {
           max_height = 0.6,
           keys = {
-            vsplit = 'v',
+            vsplit = 's',
             toggle_or_open = '<CR>',
+          },
+        },
+        definition = {
+          max_height = 0.6,
+          keys = {
+            vsplit = 's',
           },
         },
         callhierarchy = {
           max_height = 0.6,
           keys = {
-            vsplit = 'v',
+            vsplit = 's',
             edit = '<CR>',
           },
         },
