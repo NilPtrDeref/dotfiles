@@ -43,9 +43,7 @@ return {
   },
   { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
-    opts = {
-      inlay_hints = { enabled = true },
-    },
+    opts = {},
     dependencies = {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
@@ -59,11 +57,6 @@ return {
           local map = function(keys, func, desc)
             vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
           end
-
-          local toggle_inlay = function()
-            vim.lsp.inlay_hint.enable(0, not vim.lsp.inlay_hint.is_enabled())
-          end
-          vim.keymap.set('n', '<leader>li', toggle_inlay, { desc = 'Toggle [I]nlay' })
 
           local opensig = function()
             local cmp = require 'cmp'
@@ -145,25 +138,11 @@ return {
       local lsp = require 'lspconfig'
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
-      local on_attach = function(client, bufnr)
-        vim.lsp.inlay_hint.enable(bufnr, false)
-      end
+      local on_attach = function(client, bufnr) end
 
       lsp.gopls.setup {
         capabilities = capabilities,
         on_attach = on_attach,
-        inlay_hints = { enabled = true },
-        settings = {
-          gopls = {
-            ['ui.inlayhint.hints'] = {
-              assignVariableTypes = true,
-              compositeLiteralFields = true,
-              constantValues = true,
-              parameterNames = true,
-              rangeVariableTypes = true,
-            },
-          },
-        },
       }
       lsp.clangd.setup {
         on_attach = on_attach,
