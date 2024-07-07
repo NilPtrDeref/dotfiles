@@ -88,7 +88,7 @@ return {
           -- Search
           map('<leader>wds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
           map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
-          map('<C-a>', '<cmd>Lspsaga outline<CR>', 'Toggle Outline')
+          -- map('<C-a>', '<cmd>Lspsaga outline<CR>', 'Toggle Outline')
 
           -- Actions
           map('<leader>rn', '<cmd>Lspsaga rename<CR>', '[R]e[n]ame')

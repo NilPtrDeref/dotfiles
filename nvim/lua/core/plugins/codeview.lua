@@ -21,7 +21,7 @@ return {
         autojump = true,
         close_on_select = true,
       }
-      -- vim.keymap.set('n', '<C-a>', '<cmd>AerialToggle<CR>')
+      vim.keymap.set('n', '<C-a>', '<cmd>AerialToggle<CR>')
     end,
   },
 }
