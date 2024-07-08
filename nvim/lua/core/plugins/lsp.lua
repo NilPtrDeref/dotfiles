@@ -177,14 +177,12 @@ return {
       lsp.html.setup {
         on_attach = on_attach,
         capabilities = capabilities,
-        -- filetypes = { 'html', 'templ', 'svelte' },
-        filetypes = { 'html', 'templ' },
+        filetypes = { 'html', 'templ', 'svelte' },
       }
       lsp.cssls.setup {
         on_attach = on_attach,
         capabilities = capabilities,
-        -- filetypes = { 'html', 'templ', 'svelte' },
-        filetypes = { 'html', 'templ' },
+        filetypes = { 'html', 'templ', 'svelte' },
       }
       lsp.htmx.setup {
         on_attach = on_attach,
