@@ -40,7 +40,7 @@ return {
     end,
     dependencies = {
       'nvim-treesitter/nvim-treesitter', -- optional
-      'nvim-tree/nvim-web-devicons', -- optional
+      'nvim-tree/nvim-web-devicons',     -- optional
       'neovim/nvim-lspconfig',
     },
   },
@@ -50,7 +50,7 @@ return {
     dependencies = {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
-      'WhoIsSethDaniel/mason-tool-installer.nvim',
+      -- 'WhoIsSethDaniel/mason-tool-installer.nvim',
       { 'j-hui/fidget.nvim', opts = {} },
     },
     config = function()
@@ -70,8 +70,10 @@ return {
           vim.keymap.set('n', '<leader>lr', '<cmd>LspRestart<CR>', { silent = true, desc = '[L]sp [R]estart' })
 
           local border = 'single'
-          vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = border, max_width = 140, max_height = 30 })
-          vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border, max_width = 140, max_height = 30 })
+          vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover,
+            { border = border, max_width = 140, max_height = 30 })
+          vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help,
+            { border = border, max_width = 140, max_height = 30 })
           vim.diagnostic.config { float = { border = border } }
           require('lspconfig.ui.windows').default_options = { border = border }
 
@@ -126,17 +128,20 @@ return {
         'htmx',
         'tailwindcss',
         'lua_ls',
+        'cssls',
+        'eslint',
       }
       require('mason').setup { ensure_installed = ensure_installed }
       require('mason-lspconfig').setup { ensure_installed = ensure_installed }
-      ensure_installed = vim.tbl_deep_extend('force', ensure_installed, {
-        'stylua',
-        'clang-format',
-        'codelldb',
-        'delve',
-        'eslint_d',
-      })
-      require('mason-tool-installer').setup { ensure_installed = ensure_installed }
+      -- ensure_installed = vim.tbl_deep_extend('force', ensure_installed, {
+      --   'stylua',
+      --   'clang-format',
+      --   'codelldb',
+      --   'delve',
+      --   'css-lsp',
+      --   'eslint_d',
+      -- })
+      -- require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
       local lsp = require 'lspconfig'
       local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -156,7 +161,7 @@ return {
         capabilities = capabilities,
         root_dir = require('lspconfig.util').root_pattern '.git',
       }
-      lsp['eslint_d'].setup {
+      lsp.eslint.setup {
         on_attach = on_attach,
         capabilities = capabilities,
       }
@@ -172,7 +177,14 @@ return {
       lsp.html.setup {
         on_attach = on_attach,
         capabilities = capabilities,
-        filetypes = { 'html', 'templ', 'svelte' },
+        -- filetypes = { 'html', 'templ', 'svelte' },
+        filetypes = { 'html', 'templ' },
+      }
+      lsp.cssls.setup {
+        on_attach = on_attach,
+        capabilities = capabilities,
+        -- filetypes = { 'html', 'templ', 'svelte' },
+        filetypes = { 'html', 'templ' },
       }
       lsp.htmx.setup {
         on_attach = on_attach,

@@ -28,6 +28,7 @@ return {
           'html',
           'zig',
           'cpp',
+          'svelte',
         },
         auto_install = true,
         highlight = { enable = true },
