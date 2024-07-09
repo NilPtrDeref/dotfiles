@@ -235,13 +235,12 @@ return {
         lsp_fallback = true,
       },
       formatters_by_ft = {
-        lua = { 'stylua' },
+        -- lua = { 'stylua' },
         c = { 'clang-format' },
         h = { 'clang-format' },
         javascript = { 'prettier' },
         typescript = { 'prettier' },
         svelte = { 'prettier' },
-        templ = { 'templ fmt' },
       },
       formatters = {
         clang_format = {
