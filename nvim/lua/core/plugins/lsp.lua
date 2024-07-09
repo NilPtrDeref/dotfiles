@@ -130,6 +130,7 @@ return {
         'lua_ls',
         'cssls',
         'eslint',
+        'templ',
       }
       require('mason').setup { ensure_installed = ensure_installed }
       require('mason-lspconfig').setup { ensure_installed = ensure_installed }
@@ -148,9 +149,25 @@ return {
       capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
       local on_attach = function(client, bufnr) end
 
+      local disable_templ_formatting = function(client)
+        local disable_ft = { "templ" } -- add your filetypes here
+        if vim.tbl_contains(disable_ft, vim.bo.filetype) then
+          client.server_capabilities.documentFormattingProvider = false
+          client.server_capabilities.documentRangeFormattingProvider = false
+        end
+      end
+
+      local no_templ_on_attach = function(client, bufnr)
+        disable_templ_formatting(client)
+      end
+
+      lsp.templ.setup {
+        on_attach = on_attach,
+        capabilities = capabilities,
+      }
       lsp.gopls.setup {
         capabilities = capabilities,
-        on_attach = on_attach,
+        on_attach = no_templ_on_attach,
       }
       lsp.clangd.setup {
         on_attach = on_attach,
@@ -175,22 +192,22 @@ return {
         cmd = { 'zls' },
       }
       lsp.html.setup {
-        on_attach = on_attach,
-        capabilities = capabilities,
-        filetypes = { 'html', 'templ', 'svelte' },
-      }
-      lsp.cssls.setup {
-        on_attach = on_attach,
-        capabilities = capabilities,
-        filetypes = { 'html', 'templ', 'svelte' },
-      }
-      lsp.htmx.setup {
-        on_attach = on_attach,
+        on_attach = no_templ_on_attach,
         capabilities = capabilities,
         filetypes = { 'html', 'templ' },
       }
+      lsp.cssls.setup {
+        on_attach = no_templ_on_attach,
+        capabilities = capabilities,
+        filetypes = { 'html', 'templ' },
+      }
+      lsp.htmx.setup {
+        on_attach = no_templ_on_attach,
+        capabilities = capabilities,
+        filetypes = { 'html' },
+      }
       lsp.tailwindcss.setup {
-        on_attach = on_attach,
+        on_attach = no_templ_on_attach,
         capabilities = capabilities,
         filetypes = { 'html', 'templ', 'svelte', 'javascript', 'typescript' },
         init_options = { userLanguages = { templ = 'html' } },
@@ -233,6 +250,7 @@ return {
         javascript = { 'prettier' },
         typescript = { 'prettier' },
         svelte = { 'prettier' },
+        templ = { 'templ fmt' },
       },
       formatters = {
         clang_format = {
