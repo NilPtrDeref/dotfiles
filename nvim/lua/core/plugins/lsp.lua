@@ -50,7 +50,6 @@ return {
     dependencies = {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
-      -- 'WhoIsSethDaniel/mason-tool-installer.nvim',
       { 'j-hui/fidget.nvim', opts = {} },
     },
     config = function()
@@ -134,31 +133,23 @@ return {
       }
       require('mason').setup { ensure_installed = ensure_installed }
       require('mason-lspconfig').setup { ensure_installed = ensure_installed }
-      -- ensure_installed = vim.tbl_deep_extend('force', ensure_installed, {
-      --   'stylua',
-      --   'clang-format',
-      --   'codelldb',
-      --   'delve',
-      --   'css-lsp',
-      --   'eslint_d',
-      -- })
-      -- require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
       local lsp = require 'lspconfig'
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
       local on_attach = function(client, bufnr) end
 
-      local disable_templ_formatting = function(client)
+      local disable_templ_capabilities = function(client)
         local disable_ft = { "templ" } -- add your filetypes here
         if vim.tbl_contains(disable_ft, vim.bo.filetype) then
           client.server_capabilities.documentFormattingProvider = false
           client.server_capabilities.documentRangeFormattingProvider = false
+          client.server_capabilities.documentHighlightProvider = false
         end
       end
 
       local no_templ_on_attach = function(client, bufnr)
-        disable_templ_formatting(client)
+        disable_templ_capabilities(client)
       end
 
       lsp.templ.setup {
