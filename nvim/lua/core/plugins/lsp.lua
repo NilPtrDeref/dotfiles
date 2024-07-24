@@ -185,7 +185,7 @@ return {
       lsp.html.setup {
         on_attach = no_templ_on_attach,
         capabilities = capabilities,
-        filetypes = { 'html', 'templ' },
+        filetypes = { 'html', 'templ', 'javascript', 'typescript' },
       }
       lsp.cssls.setup {
         on_attach = no_templ_on_attach,
