@@ -32,7 +32,6 @@ vim.cmd 'autocmd FileType h setlocal tabstop=4 softtabstop=4 shiftwidth=4 expand
 vim.cmd 'autocmd FileType cpp setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab'
 vim.cmd 'autocmd FileType hpp setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab'
 vim.cmd 'autocmd FileType haskell setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab'
-vim.cmd 'autocmd FileType templ setlocal tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab'
 vim.cmd 'autocmd FileType javascript setlocal tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab'
 vim.cmd 'autocmd FileType typescript setlocal tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab'
 vim.cmd 'autocmd FileType svelte setlocal tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab'
@@ -52,6 +51,7 @@ vim.cmd 'autocmd BufEnter * setlocal formatoptions-=cro'
 
 -- Set up templ
 vim.filetype.add { extension = { templ = 'templ' } }
+vim.cmd 'autocmd FileType templ setlocal tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab'
 
 -- Highlight when yanking (copying) text
 vim.api.nvim_create_autocmd('TextYankPost', {
