@@ -82,6 +82,7 @@ return {
           map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
           map('<leader>cD', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
           map('gr', '<cmd>Lspsaga finder tyd+ref+imp+def<CR>', '[G]oto [R]eferences')
+          map('gR', require('telescope.builtin').lsp_references, '[G]oto [R]eferences (Telescope)')
           map('gi', '<cmd>Lspsaga incoming_calls<CR>', '[G]oto [I]ncoming Calls')
           map('go', '<cmd>Lspsaga outgoing_calls<CR>', '[G]oto [O]utgoing Calls')
           map('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
