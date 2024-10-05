@@ -121,7 +121,7 @@ return {
       local ensure_installed = {
         'clangd',
         'gopls',
-        'tsserver',
+        'ts_ls',
         'svelte',
         'html',
         'htmx',
@@ -164,7 +164,7 @@ return {
         on_attach = on_attach,
         capabilities = capabilities,
       }
-      lsp.tsserver.setup {
+      lsp.ts_ls.setup {
         on_attach = on_attach,
         capabilities = capabilities,
         root_dir = require('lspconfig.util').root_pattern '.git',
