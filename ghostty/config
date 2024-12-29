@@ -1,0 +1,20 @@
+# Font
+font-family = BerkeleyMono Nerd Font
+font-family-bold = BerkeleyMono Nerd Font Bold
+font-family-italic = BerkeleyMono Nerd Font Italic
+font-family-bold-italic = BerkeleyMono Nerd Font Bold Italic
+font-feature = -liga
+font-size = 10.5
+
+# Theme
+theme = Kanagawa Wave
+background-opacity = 0.8
+
+# Set cursor
+shell-integration-features = no-cursor
+cursor-style = block
+cursor-style-blink = true
+
+# Maximize window on start
+window-height = 500
+window-width = 500
