@@ -8,7 +8,7 @@ font-size = 10.5
 
 # Theme
 theme = Kanagawa Wave
-background-opacity = 0.8
+background-opacity = 0.9
 
 # Set cursor
 shell-integration-features = no-cursor
