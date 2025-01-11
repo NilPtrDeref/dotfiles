@@ -1,30 +1,4 @@
 return {
-  -- Copilot
-  -- {
-  --   'zbirenbaum/copilot.lua',
-  --   cmd = 'Copilot',
-  --   build = ':Copilot auth',
-  --   event = 'InsertEnter',
-  --   config = function()
-  --     require('copilot').setup {
-  --       suggestion = { enabled = false },
-  --       panel = { enabled = false },
-  --       filetypes = {
-  --         c = false,
-  --         cpp = false,
-  --       },
-  --     }
-  --   end,
-  -- },
-  --
-  -- {
-  --   'zbirenbaum/copilot-cmp',
-  --   dependencies = 'copilot.lua',
-  --   config = function()
-  --     require('copilot_cmp').setup()
-  --   end,
-  -- },
-
   { -- Autocompletion
     'hrsh7th/nvim-cmp',
     event = 'InsertEnter',
@@ -89,7 +63,6 @@ return {
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
           { name = 'path' },
-          -- { name = 'copilot' },
         },
       }
     end,

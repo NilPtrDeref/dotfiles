@@ -20,12 +20,17 @@ vim.opt.inccommand = 'split'
 vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 vim.opt.hlsearch = true
-
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = false
+vim.opt.autoindent = true
 vim.opt.smartindent = true
+vim.opt.breakindent = true
+vim.opt.wrap = true
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.autoread = true
 
 vim.cmd 'autocmd FileType c setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab'
 vim.cmd 'autocmd FileType h setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab'
@@ -37,22 +42,13 @@ vim.cmd 'autocmd FileType typescript setlocal tabstop=2 softtabstop=2 shiftwidth
 vim.cmd 'autocmd FileType svelte setlocal tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab'
 vim.cmd 'autocmd FileType go setlocal tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab'
 
-vim.opt.wrap = true
--- vim.opt.wrap = false
-
-vim.opt.swapfile = false
-vim.opt.backup = false
+-- Set up templ
+vim.filetype.add { extension = { templ = 'templ' } }
+vim.cmd 'autocmd FileType templ setlocal tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab'
 
 -- Disable auto comment
 vim.cmd 'autocmd BufEnter * set formatoptions-=cro'
 vim.cmd 'autocmd BufEnter * setlocal formatoptions-=cro'
-
--- Set h files a c filetype so clangd works in them
--- vim.g.c_syntax_for_h = true
-
--- Set up templ
-vim.filetype.add { extension = { templ = 'templ' } }
-vim.cmd 'autocmd FileType templ setlocal tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab'
 
 -- Highlight when yanking (copying) text
 vim.api.nvim_create_autocmd('TextYankPost', {

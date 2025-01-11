@@ -4,13 +4,8 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
 
 -- Quickfix
-vim.keymap.set('n', '<A-[>', '<cmd>cprevious<CR>', { desc = 'Go to previous [Q]uickfix' })
-vim.keymap.set('n', '<A-]>', '<cmd>cnext<CR>', { desc = 'Go to next [Q]uickfix' })
-vim.keymap.set('n', '<leader>qp', '<cmd>cprevious<CR>', { desc = 'Go to previous [Q]uickfix' })
-vim.keymap.set('n', '<leader>qn', '<cmd>cnext<CR>', { desc = 'Go to next [Q]uickfix' })
 vim.keymap.set('n', '<leader>qo', vim.diagnostic.setloclist, { desc = '[O]pen diagnostic [Q]uickfix list' })
 vim.keymap.set('n', '<leader>qc', '<cmd>cclose<CR>', { desc = '[C]lose diagnostic [Q]uickfix list' })
 vim.keymap.set('n', '<A-j>', '<cmd>cnext<CR>', { desc = 'Go to next Quickfix' })
@@ -29,9 +24,8 @@ vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower win
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 vim.keymap.set('n', '<C-down>', '<C-w>-', { desc = 'Shrink window vertically' })
 vim.keymap.set('n', '<C-up>', '<C-w>+', { desc = 'Grow window vertically' })
-
--- Set directory viewer (replaced by oil)
--- vim.keymap.set('n', '<leader>pv', vim.cmd.Ex, { desc = 'Go to file browser' })
+vim.keymap.set('n', '<C-left>', '<C-w><', { desc = 'Shrink window horizontally' })
+vim.keymap.set('n', '<C-right>', '<C-w>>', { desc = 'Grow window horizontally' })
 
 -- Movement
 vim.keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'Move down half page' })
