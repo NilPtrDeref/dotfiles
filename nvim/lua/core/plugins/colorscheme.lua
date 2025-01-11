@@ -1,25 +1,24 @@
 return {
   {
-    'stevearc/nightfox.nvim',
+    'rebelot/kanagawa.nvim',
     dependencies = {
-      'sainnhe/sonokai',
-      'sainnhe/everforest',
-      'catppuccin/nvim',
-      'folke/tokyonight.nvim',
-      'rose-pine/neovim',
-      'rebelot/kanagawa.nvim',
-      'morhetz/gruvbox',
-      'sainnhe/gruvbox-material',
-      'AlexvZyl/nordic.nvim',
-      'doums/darcula',
-      'rktjmp/lush.nvim',
-      'ab-dx/ares.nvim',
+      -- 'stevearc/nightfox.nvim',
+      -- 'sainnhe/sonokai',
+      -- 'sainnhe/everforest',
+      -- 'catppuccin/nvim',
+      -- 'folke/tokyonight.nvim',
+      -- 'rose-pine/neovim',
+      -- 'morhetz/gruvbox',
+      -- 'sainnhe/gruvbox-material',
+      -- 'AlexvZyl/nordic.nvim',
+      -- 'doums/darcula',
+      -- 'rktjmp/lush.nvim',
+      -- 'ab-dx/ares.nvim',
     },
     lazy = false,
     priority = 1000,
     config = function()
       vim.cmd.colorscheme 'kanagawa'
-      -- vim.opt.background = 'light'
       vim.cmd.hi 'Comment gui=none'
     end,
   },
