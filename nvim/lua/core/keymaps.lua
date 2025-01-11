@@ -39,3 +39,30 @@ vim.keymap.set('t', '<C-h>', '<Cmd>wincmd h<CR>', { desc = 'Move focus to the le
 vim.keymap.set('t', '<C-l>', '<Cmd>wincmd l<CR>', { desc = 'Move focus to the right window' })
 vim.keymap.set('t', '<C-j>', '<Cmd>wincmd j<CR>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('t', '<C-k>', '<Cmd>wincmd k<CR>', { desc = 'Move focus to the upper window' })
+
+-- LSP: Actions
+vim.keymap.set('n', '<leader>lr', '<cmd>LspRestart<CR>', { silent = true, desc = '[L]sp [R]estart' })
+vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = '[R]e[n]ame' })
+vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = '[C]ode [A]ction' })
+vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Open diagnostic in hover' })
+
+-- LSP: Hovers
+vim.keymap.set('i', '<C-S>', vim.lsp.buf.signature_help, { desc = 'Signature Documentation' })
+vim.keymap.set('n', '<C-S>', vim.lsp.buf.signature_help, { desc = 'Signature Documentation' })
+
+-- LSP: Jumps
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = '[G]oto [D]efinition' })
+vim.keymap.set('n', 'gtd', vim.lsp.buf.type_definition, { desc = '[G]oto [T]ype definition' })
+vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { desc = '[G]oto [D]eclaration' })
+
+-- LSP: Search
+vim.keymap.set('n', '<leader>gd', require('telescope.builtin').lsp_definitions, { desc = '[G]et [D]efinition' })
+vim.keymap.set('n', '<leader>gtd', require('telescope.builtin').lsp_type_definitions,
+  { desc = '[G]et [T]ype [D]efinition' })
+vim.keymap.set('n', '<leader>gr', require('telescope.builtin').lsp_references, { desc = '[G]et [R]eferences' })
+vim.keymap.set('n', '<leader>ds', require('telescope.builtin').lsp_document_symbols, { desc = '[D]ocument [S]ymbols' })
+vim.keymap.set('n', '<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols,
+  { desc = '[W]orkspace [S]ymbols' })
+vim.keymap.set('n', 'gi', require('telescope.builtin').lsp_implementations, { desc = '[G]et [I]mplementation' })
+vim.keymap.set('n', 'gI', require('telescope.builtin').lsp_incoming_calls, { desc = '[G]et [I]ncoming Calls' })
+vim.keymap.set('n', 'gO', require('telescope.builtin').lsp_outgoing_calls, { desc = '[G]et [O]utgoing Calls' })
