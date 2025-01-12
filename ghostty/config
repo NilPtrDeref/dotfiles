@@ -19,7 +19,5 @@ cursor-style-blink = true
 window-height = 500
 window-width = 500
 
-# Clean titlebar (Broken right now, not title bar so adding padding to compensate)
-gtk-titlebar = false
-window-padding-x = 15
-window-padding-y = 15
+# Clean titlebar (Broken right now on kde)
+# gtk-titlebar = false
