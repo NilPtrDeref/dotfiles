@@ -1,10 +1,14 @@
 return {
   'saghen/blink.cmp',
-  dependencies = 'rafamadriz/friendly-snippets',
+  dependencies =
+  {
+    'rafamadriz/friendly-snippets',
+    'giuxtaposition/blink-cmp-copilot'
+  },
   version = '*',
   opts = {
     sources = {
-      default = { 'lsp', 'snippets', 'path', 'buffer' },
+      default = { 'lsp', 'snippets', 'path', 'copilot', 'buffer' },
       providers = {
         lsp = {
           name = 'lsp',
@@ -28,6 +32,14 @@ return {
           score_offset = 900,
           fallbacks = { 'buffer' },
         },
+        copilot = {
+          name = "copilot",
+          enabled = true,
+          module = "blink-cmp-copilot",
+          min_keyword_length = 6,
+          score_offset = 950,
+          async = true,
+        },
         buffer = {
           name = 'buffer',
           enabled = true,
@@ -45,7 +57,40 @@ return {
     },
     appearance = {
       use_nvim_cmp_as_default = true,
-      nerd_font_variant = 'mono'
+      nerd_font_variant = 'mono',
+      kind_icons = {
+        Copilot = "",
+        Text = '󰉿',
+        Method = '󰊕',
+        Function = '󰊕',
+        Constructor = '󰒓',
+
+        Field = '󰜢',
+        Variable = '󰆦',
+        Property = '󰖷',
+
+        Class = '󱡠',
+        Interface = '󱡠',
+        Struct = '󱡠',
+        Module = '󰅩',
+
+        Unit = '󰪚',
+        Value = '󰦨',
+        Enum = '󰦨',
+        EnumMember = '󰦨',
+
+        Keyword = '󰻾',
+        Constant = '󰏿',
+
+        Snippet = '󱄽',
+        Color = '󰏘',
+        File = '󰈔',
+        Reference = '󰬲',
+        Folder = '󰉋',
+        Event = '󱐋',
+        Operator = '󰪚',
+        TypeParameter = '󰬛',
+      },
     },
     completion = {
       menu = {
