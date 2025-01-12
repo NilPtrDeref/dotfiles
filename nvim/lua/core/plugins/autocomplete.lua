@@ -107,7 +107,6 @@ return {
       menu = {
         border = 'single',
         max_height = 20,
-        max_width = 30,
       },
       documentation = {
         auto_show = true,
