@@ -107,6 +107,7 @@ return {
       menu = {
         border = 'single',
         max_height = 20,
+        max_width = 30,
       },
       documentation = {
         auto_show = true,
@@ -114,7 +115,7 @@ return {
         window = {
           border = 'single',
           max_height = 40,
-          max_width = 120,
+          max_width = 160,
         },
       },
       list = {
@@ -128,7 +129,7 @@ return {
       window = {
         border = 'single',
         max_height = 40,
-        max_width = 120,
+        max_width = 160,
       },
     },
   },
