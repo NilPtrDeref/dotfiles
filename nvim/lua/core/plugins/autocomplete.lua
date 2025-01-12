@@ -36,9 +36,18 @@ return {
           name = "copilot",
           enabled = true,
           module = "blink-cmp-copilot",
-          min_keyword_length = 6,
+          min_keyword_length = 3,
           score_offset = 950,
           async = true,
+          transform_items = function(_, items)
+            local CompletionItemKind = require("blink.cmp.types").CompletionItemKind
+            local kind_idx = #CompletionItemKind + 1
+            CompletionItemKind[kind_idx] = "Copilot"
+            for _, item in ipairs(items) do
+              item.kind = kind_idx
+            end
+            return items
+          end,
         },
         buffer = {
           name = 'buffer',
