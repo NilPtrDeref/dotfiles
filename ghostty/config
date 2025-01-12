@@ -7,7 +7,7 @@ font-feature = -liga
 font-size = 10.5
 
 # Theme
-theme = Kanagawa Wave
+theme = kanagawa-wave
 background-opacity = 0.9
 
 # Set cursor
@@ -19,5 +19,7 @@ cursor-style-blink = true
 window-height = 500
 window-width = 500
 
-# Clean titlebar
+# Clean titlebar (Broken right now, not title bar so adding padding to compensate)
 gtk-titlebar = false
+window-padding-x = 15
+window-padding-y = 15
