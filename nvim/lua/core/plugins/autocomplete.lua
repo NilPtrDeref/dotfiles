@@ -36,7 +36,7 @@ return {
           name = "copilot",
           enabled = true,
           module = "blink-cmp-copilot",
-          min_keyword_length = 3,
+          -- min_keyword_length = 3,
           score_offset = 950,
           async = true,
           transform_items = function(_, items)
