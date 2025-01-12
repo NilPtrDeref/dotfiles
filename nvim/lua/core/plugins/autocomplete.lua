@@ -15,6 +15,7 @@ return {
           enabled = true,
           module = 'blink.cmp.sources.lsp',
           score_offset = 1000,
+          max_items = 3,
           fallbacks = { 'buffer' },
         },
         snippets = {
@@ -30,6 +31,7 @@ return {
           enabled = true,
           module = 'blink.cmp.sources.path',
           score_offset = 900,
+          max_items = 3,
           fallbacks = { 'buffer' },
         },
         copilot = {
