@@ -15,7 +15,7 @@ return {
           enabled = true,
           module = 'blink.cmp.sources.lsp',
           score_offset = 1000,
-          max_items = 3,
+          max_items = 7,
           fallbacks = { 'buffer' },
         },
         snippets = {
