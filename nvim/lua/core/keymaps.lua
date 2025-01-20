@@ -59,7 +59,7 @@ vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { desc = '[G]oto [D]eclaratio
 vim.keymap.set('n', '<leader>gd', require('telescope.builtin').lsp_definitions, { desc = '[G]et [D]efinition' })
 vim.keymap.set('n', '<leader>gtd', require('telescope.builtin').lsp_type_definitions,
   { desc = '[G]et [T]ype [D]efinition' })
-vim.keymap.set('n', '<leader>gr', require('telescope.builtin').lsp_references, { desc = '[G]et [R]eferences' })
+vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, { desc = '[G]et [R]eferences' })
 vim.keymap.set('n', '<leader>ds', require('telescope.builtin').lsp_document_symbols, { desc = '[D]ocument [S]ymbols' })
 vim.keymap.set('n', '<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols,
   { desc = '[W]orkspace [S]ymbols' })
