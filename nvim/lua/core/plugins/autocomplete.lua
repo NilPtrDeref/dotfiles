@@ -15,7 +15,6 @@ return {
           enabled = true,
           module = 'blink.cmp.sources.lsp',
           score_offset = 1000,
-          max_items = 7,
           fallbacks = { 'buffer' },
         },
         snippets = {
@@ -23,7 +22,7 @@ return {
           enabled = true,
           module = 'blink.cmp.sources.snippets',
           score_offset = 950,
-          max_items = 3,
+          max_items = 5,
           fallbacks = { 'buffer' },
         },
         path = {
@@ -38,9 +37,9 @@ return {
           name = "copilot",
           enabled = true,
           module = "blink-cmp-copilot",
-          -- min_keyword_length = 3,
-          score_offset = 950,
+          score_offset = 800,
           async = true,
+          fallbacks = { 'buffer' },
           transform_items = function(_, items)
             local CompletionItemKind = require("blink.cmp.types").CompletionItemKind
             local kind_idx = #CompletionItemKind + 1
