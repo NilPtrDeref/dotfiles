@@ -52,9 +52,18 @@ vim.keymap.set('n', '<C-S>', vim.lsp.buf.signature_help, { desc = 'Signature Doc
 
 -- LSP: Jumps
 vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = '[G]oto [D]efinition' })
-vim.keymap.set('n', 'gsd', ':vsp | lua vim.lsp.buf.definition()<CR>', { desc = '[G]oto [S]plit [D]efinition' })
-vim.keymap.set('n', 'gtd', vim.lsp.buf.type_definition, { desc = '[G]oto [T]ype definition' })
+vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, { desc = '[G]oto [T]ype Definition' })
 vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { desc = '[G]oto [D]eclaration' })
+
+-- LSP: Previews
+vim.keymap.set('n', 'gpd', require('goto-preview').goto_preview_definition, { desc = '[G]oto [P]review [D]efinition' })
+vim.keymap.set('n', 'gpr', require('goto-preview').goto_preview_references, { desc = '[G]oto [P]review [R]eferences' })
+vim.keymap.set('n', 'gpt', require('goto-preview').goto_preview_type_definition,
+  { desc = '[G]oto [P]review [T]ype Definition' })
+vim.keymap.set('n', 'gpi', require('goto-preview').goto_preview_implementation,
+  { desc = '[G]oto [P]review [I]mplementation' })
+vim.keymap.set('n', 'gpD', require('goto-preview').goto_preview_declaration, { desc = '[G]oto [P]review [D]eclaration' })
+vim.keymap.set('n', 'gP', require('goto-preview').close_all_win, { desc = 'Close All [P]reviews' })
 
 -- LSP: Search
 vim.keymap.set('n', '<leader>gd', require('telescope.builtin').lsp_definitions, { desc = '[G]et [D]efinition' })
