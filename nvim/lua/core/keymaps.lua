@@ -52,6 +52,7 @@ vim.keymap.set('n', '<C-S>', vim.lsp.buf.signature_help, { desc = 'Signature Doc
 
 -- LSP: Jumps
 vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = '[G]oto [D]efinition' })
+vim.keymap.set('n', 'gsd', ':vsp | lua vim.lsp.buf.definition()<CR>', { desc = '[G]oto [S]plit [D]efinition' })
 vim.keymap.set('n', 'gtd', vim.lsp.buf.type_definition, { desc = '[G]oto [T]ype definition' })
 vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { desc = '[G]oto [D]eclaration' })
 
