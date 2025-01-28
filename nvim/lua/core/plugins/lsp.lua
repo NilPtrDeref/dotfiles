@@ -71,7 +71,9 @@ return {
       lspconfig.zls.setup {
         on_attach = on_attach,
         capabilities = capabilities,
-        cmd = { 'zls' },
+        cmd = { 'zls', '--config-path', 'zls.json' },
+        filetypes = { 'zig', 'zir' },
+        root_dir = require('lspconfig.util').root_pattern('zls.json', 'build.zig', '.git'),
       }
       lspconfig.html.setup {
         on_attach = no_templ_on_attach,
