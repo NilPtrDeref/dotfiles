@@ -40,11 +40,17 @@ vim.keymap.set('t', '<C-l>', '<Cmd>wincmd l<CR>', { desc = 'Move focus to the ri
 vim.keymap.set('t', '<C-j>', '<Cmd>wincmd j<CR>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('t', '<C-k>', '<Cmd>wincmd k<CR>', { desc = 'Move focus to the upper window' })
 
+
+local function toggle_inlay()
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+end
+
 -- LSP: Actions
 vim.keymap.set('n', '<leader>lr', '<cmd>LspRestart<CR>', { silent = true, desc = '[L]sp [R]estart' })
 vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = '[R]e[n]ame' })
 vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = '[C]ode [A]ction' })
-vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Open diagnostic in hover' })
+vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Open [D]iagnostic In Hover' })
+vim.keymap.set('n', '<leader>i', toggle_inlay, { desc = 'Toggle [I]nlay Hints' })
 
 -- LSP: Hovers
 vim.keymap.set('i', '<C-S>', vim.lsp.buf.signature_help, { desc = 'Signature Documentation' })
