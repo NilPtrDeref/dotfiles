@@ -80,10 +80,8 @@ return {
               unusedfunc = true,
               useany = true,
             },
-            usePlaceholders = true,
             completeUnimported = true,
             staticcheck = true,
-            semanticTokens = true,
           },
         },
       }
