@@ -30,7 +30,12 @@ return {
         automatic_installation = true,
       }
 
-      local on_attach = function(client, bufnr) end
+      local on_attach = function(client, bufnr)
+        if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
+          -- Enable inlay hints by default
+          vim.lsp.inlay_hint.enable(true, { bufnr })
+        end
+      end
       local disable_templ_capabilities = function(client)
         local disable_ft = { "templ" } -- add your filetypes here
         if vim.tbl_contains(disable_ft, vim.bo.filetype) then
@@ -41,6 +46,7 @@ return {
       end
       local no_templ_on_attach = function(client, bufnr)
         disable_templ_capabilities(client)
+        on_attach(client, bufnr)
       end
 
       lspconfig.templ.setup {
