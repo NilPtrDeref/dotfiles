@@ -31,10 +31,10 @@ return {
       }
 
       local on_attach = function(client, bufnr)
-        if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
-          -- Enable inlay hints by default
-          vim.lsp.inlay_hint.enable(true, { bufnr })
-        end
+        -- Enable inlay hints by default
+        -- if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
+        --   vim.lsp.inlay_hint.enable(true, { bufnr })
+        -- end
       end
       local disable_templ_capabilities = function(client)
         local disable_ft = { "templ" } -- add your filetypes here
