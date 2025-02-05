@@ -11,6 +11,10 @@ return {
       statusline.section_location = function()
         return '%2l:%-2v'
       end
+
+      require('mini.move').setup()
+      require('mini.splitjoin').setup()
+      require('mini.surround').setup()
     end,
   },
 }
