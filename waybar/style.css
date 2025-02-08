@@ -156,7 +156,6 @@ label:focus {
 #network {
 	background-color: #000000;
 	color: white;
-
 }
 
 #network.disconnected {
@@ -173,26 +172,9 @@ label:focus {
 	color: #ffffff;
 }
 
-#custom-media {
-	background-color: #66cc99;
-	color: #2a5c45;
-	min-width: 100px;
-}
-
-#custom-media.custom-spotify {
-	background-color: #66cc99;
-}
-
-#custom-media.custom-vlc {
-	background-color: #ffa000;
-}
-
 #temperature {
-	background-color: #f0932b;
-}
-
-#temperature.critical {
-	background-color: #eb4d4b;
+	background-color: #000000;
+	color: #ffffff;
 }
 
 #tray {
@@ -206,29 +188,4 @@ label:focus {
 #idle_inhibitor.activated {
 	background-color: #ecf0f1;
 	color: #2d3436;
-}
-
-#mpd {
-	background-color: #66cc99;
-	color: #2a5c45;
-}
-
-#mpd.disconnected {
-	background-color: #f53c3c;
-}
-
-#mpd.stopped {
-	background-color: #90b1b1;
-}
-
-#mpd.paused {
-	background-color: #51a37a;
-}
-
-#language {
-	background: #bbccdd;
-	color: #333333;
-	padding: 0 5px;
-	margin: 6px 3px;
-	min-width: 16px;
 }
