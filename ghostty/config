@@ -4,7 +4,7 @@ font-family-bold = BerkeleyMono Nerd Font Bold
 font-family-italic = BerkeleyMono Nerd Font Italic
 font-family-bold-italic = BerkeleyMono Nerd Font Bold Italic
 font-feature = -liga
-font-size = 10.5
+font-size = 9.5
 
 # Theme
 theme = kanagawa-wave
