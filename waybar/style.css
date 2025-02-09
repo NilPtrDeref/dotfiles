@@ -30,27 +30,47 @@ window#waybar {
 	background-color: #eb6f92;
 }
 
-#clock,
 #cpu,
 #memory,
 #temperature,
-#network,
 #pulseaudio,
+#clock,
+#network,
 #tray {
 	background-color: transparent;
 	color: #e0def4;
-	margin: 0.3em 0.6em;
-	border: 1px solid #31748f;
+	margin: 5px 5px;
 	border-radius: 5px;
 	padding: 0 5px;
 }
 
 #clock {
-	color: #eb6f92
+	color: #eb6f92;
 }
 
 #cpu {
-	color: #f6c177
+	color: #f6c177;
+}
+
+#memory {
+	color: #ebbcba;
+}
+
+#temperature {
+	color: #31748f;
+}
+
+#network {
+	color: #0ccfd8;
+	margin-right: 0px;
+}
+
+#pulseaudio {
+	color: #c4a7e7;
+}
+
+#tray {
+	margin-left: 0px;
 }
 
 @keyframes blink {
