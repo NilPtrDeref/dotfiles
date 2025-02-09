@@ -22,7 +22,8 @@
             "4": "",
             "urgent": "",
             //"active": "",
-            "default": ""
+            //"default": ""
+            "default": ""
         }
     },
     "clock": {
