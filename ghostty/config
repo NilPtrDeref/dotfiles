@@ -7,7 +7,7 @@ font-feature = -liga
 font-size = 9
 
 # Theme
-theme = kanagawa-wave
+theme = rose-pine
 background-opacity = 0.9
 
 # Set cursor
