@@ -45,6 +45,14 @@ window#waybar {
 	padding: 0 5px;
 }
 
+#clock {
+	color: #eb6f92
+}
+
+#cpu {
+	color: #f6c177
+}
+
 @keyframes blink {
 	to {
 		background-color: #908caa;
