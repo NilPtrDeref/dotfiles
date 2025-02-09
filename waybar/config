@@ -50,7 +50,7 @@
     },
     "network": {
         "interval": 5,
-        "format-wifi": "({bandwidthUpBits} / {bandwidthDownBits})",
+        "format-wifi": "( {bandwidthUpBits} /  {bandwidthDownBits})",
         "format-ethernet": "{ifname}: {ipaddr}/{cidr}",
         "format-linked": "{ifname} (No IP)",
         "format-disconnected": "Disconnected",
