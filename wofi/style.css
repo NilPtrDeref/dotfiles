@@ -10,7 +10,7 @@ window {
 	margin: 10px;
 	border: none;
 	border-radius: 10px;
-	color: #eb6f92;
+	color: #e0def4;
 	background-color: #26233a;
 }
 
@@ -26,25 +26,17 @@ window {
 	background-color: #191724;
 }
 
-#scroll {
-	margin: 0px;
-	border: none;
-}
-
 #text {
 	margin: 5px;
-	border: none;
 	color: #e0def4;
 }
 
 #entry:selected {
-	background-color: #eb6f92;
-	color: #191724;
-	outline: none;
+	background-color: #31748f;
+	color: #e0def4;
 }
 
 #entry:selected * {
-	background-color: #eb6f92;
-	color: #191724;
-	outline: none;
+	background-color: #31748f;
+	color: #e0def4;
 }
