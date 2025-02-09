@@ -12,7 +12,19 @@ return {
         return '%2l:%-2v'
       end
 
-      require('mini.move').setup()
+      require('mini.move').setup({
+        mappings = {
+          left = '<M-H>',
+          right = '<M-L>',
+          down = '<M-J>',
+          up = '<M-K>',
+          line_left = '<M-H>',
+          line_right = '<M-L>',
+          line_down = '<M-J>',
+          line_up = '<M-K>',
+        },
+      })
+
       require('mini.splitjoin').setup()
       require('mini.surround').setup()
     end,
