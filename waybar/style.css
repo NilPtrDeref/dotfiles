@@ -30,13 +30,15 @@ window#waybar {
 	background-color: #eb6f92;
 }
 
+#custom-drawer,
+#custom-pacman,
 #cpu,
 #memory,
 #temperature,
 #pulseaudio,
+#bluetooth,
 #clock,
-#network,
-#tray {
+#network {
 	background-color: transparent;
 	color: #e0def4;
 	margin: 5px 5px;
@@ -44,7 +46,12 @@ window#waybar {
 	padding: 0 5px;
 }
 
-#clock {
+#custom-drawer {
+	color: #0ccfd8;
+	margin-left: 10px;
+}
+
+#custom-pacman {
 	color: #eb6f92;
 }
 
@@ -60,17 +67,33 @@ window#waybar {
 	color: #31748f;
 }
 
-#network {
-	color: #0ccfd8;
-	margin-right: 10px;
-}
-
 #pulseaudio {
 	color: #c4a7e7;
 }
 
-#tray {
-	margin-left: 0px;
+#bluetooth.off,
+#bluetooth.disabled {
+	color: #eb6f92;
+}
+
+#bluetooth.on,
+#bluetooth.discoverable,
+#bluetooth.discovering,
+#bluetooth.pairable {
+	color: #c4a7e7;
+}
+
+#bluetooth.connected {
+	color: #31748f;
+}
+
+#clock {
+	color: #eb6f92;
+}
+
+#network {
+	color: #0ccfd8;
+	margin-right: 10px;
 }
 
 @keyframes blink {
