@@ -3,7 +3,7 @@
 	"height": 10,
 	"margin-top": 5,
 	"margin-left": 10,
-	"margin-right": 5,
+	"margin-right": 9,
 
 	"modules-left": ["custom/drawer", "custom/pacman", "cpu", "memory", "temperature"],
 	"modules-center": ["hyprland/workspaces"],
