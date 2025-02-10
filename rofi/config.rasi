@@ -2,7 +2,6 @@
 
 configuration {
 	terminal: "ghostty";
-	run-command: "ghostty --command={cmd}";
 }
 
 * {
