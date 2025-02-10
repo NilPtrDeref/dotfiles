@@ -2,7 +2,7 @@
 	"position": "top",
 	"height": 10,
 	"margin-top": 5,
-	"margin-left": 5,
+	"margin-left": 10,
 	"margin-right": 5,
 
 	"modules-left": ["custom/drawer", "custom/pacman", "cpu", "memory", "temperature"],
