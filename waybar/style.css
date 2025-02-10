@@ -62,7 +62,7 @@ window#waybar {
 
 #network {
 	color: #0ccfd8;
-	margin-right: 0px;
+	margin-right: 10px;
 }
 
 #pulseaudio {
