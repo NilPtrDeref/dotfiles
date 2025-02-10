@@ -5,7 +5,7 @@
 	"margin-left": 10,
 	"margin-right": 9,
 
-	"modules-left": ["custom/drawer", "custom/pacman", "cpu", "memory", "temperature"],
+	"modules-left": ["custom/drawer", "custom/pacman", "cpu", "memory", "temperature", "tray"],
 	"modules-center": ["hyprland/workspaces"],
 	"modules-right": ["pulseaudio", "bluetooth", "clock", "network"],
 

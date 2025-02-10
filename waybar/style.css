@@ -35,6 +35,7 @@ window#waybar {
 #cpu,
 #memory,
 #temperature,
+#tray,
 #pulseaudio,
 #bluetooth,
 #clock,
