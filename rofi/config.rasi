@@ -1,5 +1,10 @@
 @import "default"
 
+configuration {
+	terminal: "ghostty";
+	run-command: "ghostty --command={cmd}";
+}
+
 * {
 	bg: #191724;
 	cur: #1f1d2e;
@@ -12,7 +17,7 @@
 	red: #eb6f92;
 	yel: #f6c177;
 
-	font: "BerkeleyMono Nerd Font 12";
+	font: "BerkeleyMono Nerd Font 10";
 
 	foreground: @fgd;
 	background: @bg;
