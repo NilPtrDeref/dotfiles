@@ -71,7 +71,6 @@
 	},
 	"bluetooth": {
 		"format": "",
-		"format-connected-battery": "{device_battery_percentage}% ",
 		"on-click": "blueman-manager"
 	},
 	"pulseaudio": {
