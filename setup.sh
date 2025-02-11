@@ -38,10 +38,38 @@ sudo pacman -S \
 	tmux \
 	noto-fonts \
 	noto-fonts-emoji \
+	zip \
 	unzip \
 	git \
 	base-devel \
-	archlinux-xdg-menu
+	archlinux-xdg-menu \
+	grim \
+	slurp \
+	xdg-desktop-portal-hyprland \
+	pipewire \
+	wireplumber \
+	xorg-xrandr \
+	ark \
+	qt6-svg \
+	qt6-declarative \
+	qt5-quickcontrols2 \
+	rofi-wayland \
+	nwg-drawer \
+	btop \
+	gucharmap \
+	man \
+	neofetch \
+	kvantum \
+	qt6ct \
+	nwg-look \
+	wl-clipboard \
+	hyprpicker \
+	ttf-font-awesome \
+	hypridle \
+	pavucontrol \
+	hyprlock \
+	waybar \
+	hyprpaper
 
 mkdir opt
 cd opt
@@ -51,4 +79,5 @@ cd yay
 makepkg -si
 
 yay install google-chrome
+
 
