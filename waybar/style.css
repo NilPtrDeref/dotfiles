@@ -89,12 +89,12 @@ window#waybar {
 }
 
 #clock {
-	color: #eb6f92;
+	color: #0ccfd8;
+	margin-right: 10px;
 }
 
 #network {
-	color: #0ccfd8;
-	margin-right: 10px;
+	color: #eb6f92;
 }
 
 @keyframes blink {

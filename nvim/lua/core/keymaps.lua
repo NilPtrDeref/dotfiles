@@ -8,8 +8,8 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagn
 -- Quickfix
 vim.keymap.set('n', '<leader>qo', vim.diagnostic.setloclist, { desc = '[O]pen diagnostic [Q]uickfix list' })
 vim.keymap.set('n', '<leader>qc', '<cmd>cclose<CR>', { desc = '[C]lose diagnostic [Q]uickfix list' })
-vim.keymap.set('n', '<A-j>', '<cmd>cnext<CR>', { desc = 'Go to next Quickfix' })
-vim.keymap.set('n', '<A-k>', '<cmd>cprevious<CR>', { desc = 'Go to previous Quickfix' })
+vim.keymap.set('n', '<A-N>', '<cmd>cnext<CR>', { desc = 'Go to next Quickfix' })
+vim.keymap.set('n', '<A-P>', '<cmd>cprevious<CR>', { desc = 'Go to previous Quickfix' })
 
 -- Disable arrow keys in normal mode
 vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')

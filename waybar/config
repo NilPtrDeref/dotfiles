@@ -7,7 +7,7 @@
 
 	"modules-left": ["custom/drawer", "custom/pacman", "cpu", "memory", "temperature", "tray"],
 	"modules-center": ["hyprland/workspaces"],
-	"modules-right": ["pulseaudio", "bluetooth", "clock", "network"],
+	"modules-right": ["pulseaudio", "bluetooth", "network", "clock"],
 
 	"custom/drawer": {
 		"format": "",
