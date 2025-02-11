@@ -5,7 +5,7 @@
 	"margin-left": 10,
 	"margin-right": 9,
 
-	"modules-left": ["custom/drawer", "custom/pacman", "cpu", "memory", "temperature", "tray"],
+	"modules-left": ["custom/drawer", "custom/pacman", "cpu", "memory", "tray"],
 	"modules-center": ["hyprland/workspaces"],
 	"modules-right": ["pulseaudio", "bluetooth", "network", "clock"],
 
@@ -50,13 +50,6 @@
 	"memory": {
 			"interval": 5,
 			"format": "{}% ",
-			"tooltip": false
-	},
-	"temperature": {
-			"interval": 5,
-			"critical-threshold": 80,
-			"format": "{temperatureC}°C {icon}",
-			"format-icons": ["", "", ""],
 			"tooltip": false
 	},
 	"network": {

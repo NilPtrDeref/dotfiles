@@ -34,7 +34,6 @@ window#waybar {
 #custom-pacman,
 #cpu,
 #memory,
-#temperature,
 #tray,
 #pulseaudio,
 #bluetooth,
@@ -62,10 +61,6 @@ window#waybar {
 
 #memory {
 	color: #ebbcba;
-}
-
-#temperature {
-	color: #31748f;
 }
 
 #pulseaudio {
