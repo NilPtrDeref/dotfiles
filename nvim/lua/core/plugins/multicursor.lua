@@ -49,6 +49,9 @@ return {
       -- Align cursor columns.
       set("n", "<leader>a", mc.alignCursors)
 
+      -- match new cursors within visual selections by regex.
+      set("x", "M", mc.matchCursors)
+
       -- Append/insert for each line of visual selections.
       set("x", "I", mc.insertVisual)
       set("x", "A", mc.appendVisual)
