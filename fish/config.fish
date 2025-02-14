@@ -2,7 +2,10 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
     set fish_greeting
     alias vim "nvim"
+    alias v "nvim"
     alias tmuxa "tmux attach-session"
+    alias l "lazygit"
+    alias y "yazi"
     set PYENV_ROOT $HOME/.pyenv
 
     # $HOME/opt/zls/zig-out/bin
