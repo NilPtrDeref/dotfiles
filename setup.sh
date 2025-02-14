@@ -13,6 +13,7 @@ sudo pacman -S \
 	discord \
 	docker \
 	docker-buildx \
+	docker-compose \
 	fzf \
 	nvtop \
 	shotwell \
