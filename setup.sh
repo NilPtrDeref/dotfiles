@@ -70,7 +70,9 @@ sudo pacman -S \
 	hyprlock \
 	waybar \
 	hyprpaper \
-	yazi
+	yazi \
+	wikiman \
+	arch-wiki-docs
 
 mkdir opt
 cd opt
