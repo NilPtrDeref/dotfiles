@@ -9,4 +9,5 @@ if status is-interactive
     set -U fish_user_paths $HOME/go/bin $PYENV_ROOT/bin $fish_user_paths
     pyenv init - | source
     set EDITOR nvim
+    set -Ux MANPAGER 'nvim +Man!'
 end
