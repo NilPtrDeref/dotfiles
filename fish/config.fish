@@ -8,4 +8,5 @@ if status is-interactive
     # $HOME/opt/zls/zig-out/bin
     set -U fish_user_paths $HOME/go/bin $PYENV_ROOT/bin $fish_user_paths
     pyenv init - | source
+    set EDITOR nvim
 end
