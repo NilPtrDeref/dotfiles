@@ -69,7 +69,8 @@ sudo pacman -S \
 	pavucontrol \
 	hyprlock \
 	waybar \
-	hyprpaper
+	hyprpaper \
+	yazi
 
 mkdir opt
 cd opt
