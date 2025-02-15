@@ -6,11 +6,11 @@ if status is-interactive
     alias tmuxa "tmux attach-session"
     alias l "lazygit"
     alias y "yazi"
-    set PYENV_ROOT $HOME/.pyenv
+    set -Ux PYENV_ROOT $HOME/.pyenv
 
     # $HOME/opt/zls/zig-out/bin
     set -U fish_user_paths $HOME/go/bin $PYENV_ROOT/bin $fish_user_paths
     pyenv init - | source
     set EDITOR nvim
-    set MANPAGER 'nvim +Man!'
+    set -Ux MANPAGER 'nvim +Man!'
 end
