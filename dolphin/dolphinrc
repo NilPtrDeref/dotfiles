@@ -9,10 +9,9 @@ Places Icons Static Size=22
 
 [MainWindow]
 MenuBar=Disabled
-ToolBarsMovable=Disabled
-
-[ViewPropertiesDialog]
-1920x1080 screen: Window-Maximized=true
 
 [UiSettings]
 ColorScheme=kvantum-dark
+
+[ViewPropertiesDialog]
+1920x1080 screen: Window-Maximized=true
