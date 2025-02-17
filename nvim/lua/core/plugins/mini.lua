@@ -26,7 +26,6 @@ return {
       })
 
       require('mini.splitjoin').setup()
-      require('mini.surround').setup()
     end,
   },
 }
