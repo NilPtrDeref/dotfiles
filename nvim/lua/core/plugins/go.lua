@@ -9,6 +9,7 @@ return {
         lsp_inlay_hints = {
           enable = false,
         },
+        remap_commands = { GoDoc = false },
       }
 
       -- Run gofmt on save
@@ -38,6 +39,10 @@ return {
     },
     -- build = "go install github.com/lotusirous/gostdsym/stdsym@latest",
     cmd = { "GoDoc" },
-    opts = {},
+    opts = {
+      picker = {
+        type = "telescope"
+      },
+    },
   },
 }
