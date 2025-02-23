@@ -6,28 +6,29 @@
 }
 
 window#waybar {
-	background-color: #191724;
-	color: #e0def4;
+	background-color: #1e1e2e;
+	color: #cdd6f4;
 	border-radius: 5px;
 }
 
 #workspaces button {
 	margin: 0.3em 0.3em;
 	background-color: transparent;
-	color: #e0def4;
+	color: #cdd6f4;
 	padding: 0 15px;
 }
 
 #workspaces button:hover {
-	background: #908caa;
+	background: #6c7086;
 }
 
 #workspaces button.active {
-	background-color: #31748f;
+	background-color: #b4befe;
+	color: #1e1e2e;
 }
 
 #workspaces button.urgent {
-	background-color: #eb6f92;
+	background-color: #f38ba8;
 }
 
 #custom-drawer,
@@ -40,65 +41,65 @@ window#waybar {
 #clock,
 #network {
 	background-color: transparent;
-	color: #e0def4;
+	color: #cdd6f4;
 	margin: 5px 5px;
 	border-radius: 5px;
 	padding: 0 5px;
 }
 
 #custom-drawer {
-	color: #0ccfd8;
+	color: #f5e0dc;
 	margin-left: 10px;
 }
 
 #custom-pacman {
-	color: #eb6f92;
+	color: #f2cdcd;
 }
 
 #cpu {
-	color: #f6c177;
+	color: #f5c2e7;
 }
 
 #memory {
-	color: #ebbcba;
+	color: #cba6f7;
 }
 
 #pulseaudio {
-	color: #c4a7e7;
+	color: #eba0ac;
 }
 
 #bluetooth.off,
 #bluetooth.disabled {
-	color: #eb6f92;
+	color: #eba0ac;
 }
 
 #bluetooth.on,
 #bluetooth.discoverable,
 #bluetooth.discovering,
 #bluetooth.pairable {
-	color: #c4a7e7;
+	color: #fab387;
 }
 
 #bluetooth.connected {
-	color: #31748f;
+	color: #a6e3a1;
 }
 
 #clock {
-	color: #0ccfd8;
+	color: #94e2d5;
 	margin-right: 10px;
 }
 
 #network {
-	color: #eb6f92;
+	color: #89b4fa;
 }
 
 @keyframes blink {
 	to {
-		background-color: #908caa;
-		color: #191724;
+		background-color: #181825;
+		color: #1e1e2e;
 	}
 }
 
 label:focus {
-	background-color: #191724;
+	background-color: #1e1e2e;
 }

@@ -1,12 +1,12 @@
 return {
   {
-    'rose-pine/neovim',
+    'catppuccin/nvim',
     dependencies = {
+      -- 'rose-pine/neovim',
       -- 'rebelot/kanagawa.nvim',
       -- 'stevearc/nightfox.nvim',
       -- 'sainnhe/sonokai',
       -- 'sainnhe/everforest',
-      -- 'catppuccin/nvim',
       -- 'folke/tokyonight.nvim',
       -- 'morhetz/gruvbox',
       -- 'sainnhe/gruvbox-material',
@@ -18,7 +18,7 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'rose-pine'
+      vim.cmd.colorscheme 'catppuccin-mocha'
       vim.cmd.hi 'Comment gui=none'
     end,
   },
