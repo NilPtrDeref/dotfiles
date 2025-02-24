@@ -9,7 +9,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup {
   'tpope/vim-sleuth',
-  -- { 'windwp/nvim-autopairs', event = 'InsertEnter', config = true },
+  { 'windwp/nvim-autopairs', event = 'InsertEnter', config = true },
   { import = 'core.plugins' },
 }
 
