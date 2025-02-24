@@ -103,6 +103,7 @@ return {
       },
     },
     completion = {
+      accept = { auto_brackets = { enabled = false }, },
       menu = {
         border = 'single',
         max_height = 20,
