@@ -35,8 +35,6 @@ vim.keymap.set('t', '<C-l>', '<Cmd>wincmd l<CR>', { desc = 'Move focus to the ri
 vim.keymap.set('t', '<C-j>', '<Cmd>wincmd j<CR>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('t', '<C-k>', '<Cmd>wincmd k<CR>', { desc = 'Move focus to the upper window' })
 
-vim.keymap.set('n', '<C-m>', '<Cmd>!make<CR><CR>', { desc = 'Run make' })
-
 
 local function toggle_inlay()
   vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
