@@ -7,7 +7,8 @@ font-feature = -liga
 font-size = 9
 
 # Theme
-theme = catppuccin-mocha
+# theme = catppuccin-mocha
+theme = ayu
 background-opacity = 0.9
 
 # Set cursor
