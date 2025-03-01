@@ -1,7 +1,8 @@
 return {
   {
-    'catppuccin/nvim',
+    'Shatur/neovim-ayu',
     dependencies = {
+      -- 'catppuccin/nvim',
       -- 'rose-pine/neovim',
       -- 'rebelot/kanagawa.nvim',
       -- 'stevearc/nightfox.nvim',
@@ -18,7 +19,12 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'catppuccin-mocha'
+      require('ayu').setup({
+        mirage = true,
+        terminal = true,
+        overrides = {},
+      })
+      vim.cmd.colorscheme 'ayu-mirage'
       vim.cmd.hi 'Comment gui=none'
     end,
   },
