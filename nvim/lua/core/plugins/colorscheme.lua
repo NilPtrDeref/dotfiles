@@ -20,11 +20,11 @@ return {
     priority = 1000,
     config = function()
       require('ayu').setup({
-        mirage = true,
+        mirage = false,
         terminal = true,
         overrides = {},
       })
-      vim.cmd.colorscheme 'ayu-mirage'
+      vim.cmd.colorscheme 'ayu-dark'
       vim.cmd.hi 'Comment gui=none'
     end,
   },
