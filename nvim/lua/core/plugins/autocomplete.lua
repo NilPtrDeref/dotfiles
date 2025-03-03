@@ -103,9 +103,6 @@ return {
       },
     },
     completion = {
-      ghost_text = {
-        enabled = true,
-      },
       menu = {
         border = 'single',
         max_height = 20,
