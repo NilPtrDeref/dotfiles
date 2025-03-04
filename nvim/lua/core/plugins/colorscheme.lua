@@ -69,6 +69,10 @@ return {
             DiagnosticVirtualTextInfo  = makeDiagnosticColor(theme.diag.info),
             DiagnosticVirtualTextWarn  = makeDiagnosticColor(theme.diag.warning),
             DiagnosticVirtualTextError = makeDiagnosticColor(theme.diag.error),
+            DiagnosticSignHint         = { bg = "NONE", blend = vim.o.pumblend },
+            DiagnosticSignInfo         = { bg = "NONE", blend = vim.o.pumblend },
+            DiagnosticSignWarn         = { bg = "NONE", blend = vim.o.pumblend },
+            DiagnosticSignError        = { bg = "NONE", blend = vim.o.pumblend },
 
             BlinkCmpMenu               = { fg = theme.ui.fg_dim, bg = "NONE", blend = vim.o.pumblend },
             BlinkCmpMenuBorder         = { fg = colors.palette.carpYellow, bg = "NONE", blend = vim.o.pumblend },
