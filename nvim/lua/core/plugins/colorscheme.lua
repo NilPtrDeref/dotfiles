@@ -2,6 +2,7 @@ return {
   {
     'Shatur/neovim-ayu',
     dependencies = {
+      -- 'jake-wilcox/afterglow.nvim',
       -- 'catppuccin/nvim',
       -- 'rose-pine/neovim',
       -- 'rebelot/kanagawa.nvim',
