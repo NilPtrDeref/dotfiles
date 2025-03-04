@@ -84,9 +84,9 @@ return {
             BlinkCmpSignatureHelp       = { fg = theme.ui.fg_dim, bg = "NONE", blend = vim.o.pumblend },
             BlinkCmpSignatureHelpBorder = { fg = colors.palette.carpYellow, bg = "NONE", blend = vim.o.pumblend },
             Pmenu                       = { fg = theme.ui.shade0, bg = "NONE", blend = vim.o.pumblend },
-            PmenuSel                    = { fg = "NONE", bg = "NONE", blend = vim.o.pumblend },
-            PmenuSbar                   = { bg = "NONE", blend = vim.o.pumblend },
-            PmenuThumb                  = { bg = "NONE", blend = vim.o.pumblend },
+            PmenuSel                    = { fg = "NONE", bg = theme.ui.bg_p2 },
+            PmenuSbar                   = { bg = theme.ui.bg_m1 },
+            PmenuThumb                  = { bg = colors.palette.roninYellow },
 
             RenderMarkdownCode          = { bg = "NONE", blend = vim.o.pumblend },
             ColorColumn                 = { bg = "NONE", blend = vim.o.pumblend },
