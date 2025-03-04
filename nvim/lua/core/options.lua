@@ -31,7 +31,7 @@ vim.opt.wrap = true
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.autoread = true
-vim.opt.number = false
+vim.opt.number = true
 
 vim.cmd 'autocmd FileType c setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab'
 vim.cmd 'autocmd FileType h setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab'
