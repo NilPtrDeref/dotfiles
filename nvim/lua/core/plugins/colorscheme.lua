@@ -76,7 +76,7 @@ return {
 
             BlinkCmpMenu               = { fg = theme.ui.fg_dim, bg = "NONE", blend = vim.o.pumblend },
             BlinkCmpMenuBorder         = { fg = colors.palette.carpYellow, bg = "NONE", blend = vim.o.pumblend },
-            BlinkCmpMenuSelection      = { fg = colors.palette.carpYellow, bg = theme.ui.bg_p1 },
+            BlinkCmpMenuSelection      = { fg = colors.palette.roninYellow, bg = theme.ui.bg_p1 },
             Pmenu                      = { fg = theme.ui.shade0, bg = theme.ui.bg_p1, blend = vim.o.pumblend },
             PmenuSel                   = { fg = "NONE", bg = theme.ui.bg_m1 },
             PmenuSbar                  = { bg = theme.ui.bg_m1 },
