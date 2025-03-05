@@ -1,11 +1,5 @@
-@theme "/home/jwood/.local/share/rofi/themes/rounded-green-dark.rasi"
+@theme "rounded-kanagawa-green.rasi"
 
 configuration {
 	terminal: "ghostty";
-}
-
-* {
-  background-color:            transparent;
-  spacing:                     2;
-	font: "BerkeleyMono Nerd Font 10";
 }

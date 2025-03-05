@@ -1,16 +1,16 @@
 * {
-    bg0:    #212121F2;
-    bg1:    #2A2A2A;
-    bg2:    #3D3D3D80;
-    bg3:    #4CAF50F2;
-    fg0:    #E6E6E6;
-    fg1:    #FFFFFF;
-    fg2:    #969696;
-    fg3:    #3D3D3D;
+    bg0:    #1F1F28F2;
+    bg1:    #2A2A37;
+    bg2:    #363646;
+    bg3:    #76946A;
+    fg0:    #DCD7BA;
+    fg1:    #C8C093;
+    fg2:    #98BB6C;
+    fg3:    #DCA561;
 }
 
 * {
-    font:   "Roboto 12";
+    font: "BerkeleyMono Nerd Font 12";
 
     background-color:   transparent;
     text-color:         @fg0;
@@ -25,6 +25,8 @@ window {
     y-offset:       calc(50% - 176px);
     width:          480;
     border-radius:  24px;
+    border:         2px;
+    border-color:       @bg3;
 
     background-color:   @bg0;
 }
