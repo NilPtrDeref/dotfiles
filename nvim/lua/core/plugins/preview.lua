@@ -5,7 +5,7 @@ return {
     config = function()
       require('goto-preview').setup {
         width = 200,
-        height = 80,
+        height = 45,
       }
     end,
   },
