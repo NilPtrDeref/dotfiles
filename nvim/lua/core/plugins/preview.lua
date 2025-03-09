@@ -4,8 +4,8 @@ return {
     event = "BufEnter",
     config = function()
       require('goto-preview').setup {
-        width = 140,
-        height = 30,
+        width = 200,
+        height = 80,
       }
     end,
   },
