@@ -12,13 +12,14 @@ return {
       local lspconfig = require('lspconfig')
       local capabilities = require('blink.cmp').get_lsp_capabilities()
       local ensure_installed = {
-        'clangd',
         'gopls',
         'ts_ls',
         'svelte',
         'html',
         'htmx',
         'tailwindcss',
+        'ols',
+        'clangd',
         'lua_ls',
         'cssls',
         'eslint',
@@ -94,6 +95,10 @@ return {
         capabilities = capabilities,
       }
       lspconfig.svelte.setup {
+        on_attach = on_attach,
+        capabilities = capabilities,
+      }
+      lspconfig.ols.setup {
         on_attach = on_attach,
         capabilities = capabilities,
       }
