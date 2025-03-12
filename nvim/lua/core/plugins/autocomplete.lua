@@ -104,6 +104,8 @@ return {
     },
     completion = {
       menu = {
+        -- Disable automatically opening autocomplete menu. Only show it when manually requested.
+        auto_show = false,
         border = 'single',
         max_height = 20,
         draw = {
