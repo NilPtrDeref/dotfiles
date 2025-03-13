@@ -42,6 +42,7 @@ vim.cmd 'autocmd FileType javascript setlocal tabstop=2 softtabstop=2 shiftwidth
 vim.cmd 'autocmd FileType typescript setlocal tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab'
 vim.cmd 'autocmd FileType svelte setlocal tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab'
 vim.cmd 'autocmd FileType go setlocal tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab'
+vim.cmd 'autocmd FileType html setlocal tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab'
 
 -- Set up templ
 vim.filetype.add { extension = { templ = 'templ' } }

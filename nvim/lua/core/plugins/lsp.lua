@@ -119,6 +119,9 @@ return {
         on_attach = no_templ_on_attach,
         capabilities = capabilities,
         filetypes = { 'html', 'templ', 'javascript', 'typescript' },
+        init_options = {
+          provideFormatter = false,
+        },
       }
       lspconfig.cssls.setup {
         on_attach = no_templ_on_attach,
