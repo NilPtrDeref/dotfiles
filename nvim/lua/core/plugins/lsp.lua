@@ -203,6 +203,7 @@ return {
         javascript = { 'prettier' },
         typescript = { 'prettier' },
         svelte = { 'prettier' },
+        html = { 'prettier' },
       },
       formatters = {
         clang_format = {
