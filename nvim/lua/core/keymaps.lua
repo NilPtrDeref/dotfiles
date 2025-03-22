@@ -44,7 +44,7 @@ end
 vim.keymap.set('n', '<leader>lr', '<cmd>LspRestart<CR>', { silent = true, desc = '[L]sp [R]estart' })
 vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = '[R]e[n]ame' })
 vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = '[C]ode [A]ction' })
-vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Open [D]iagnostic In Hover' })
+vim.keymap.set('n', '<leader>dd', vim.diagnostic.open_float, { desc = 'Open [D]iagnostic In Hover' })
 vim.keymap.set('n', '<leader>i', toggle_inlay, { desc = 'Toggle [I]nlay Hints' })
 
 -- LSP: Hovers
