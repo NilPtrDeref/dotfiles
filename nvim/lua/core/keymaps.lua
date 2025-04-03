@@ -2,8 +2,10 @@
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Diagnostic keymaps
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
+vim.keymap.set('n', '[d', function() vim.diagnostic.jump({ count = -1, float = true }) end,
+  { desc = 'Go to previous [D]iagnostic message' })
+vim.keymap.set('n', ']d', function() vim.diagnostic.jump({ count = 1, float = true }) end,
+  { desc = 'Go to next [D]iagnostic message' })
 
 -- Quickfix
 vim.keymap.set('n', '<leader>qo', vim.diagnostic.setloclist, { desc = '[O]pen diagnostic [Q]uickfix list' })
@@ -48,8 +50,15 @@ vim.keymap.set('n', '<leader>dd', vim.diagnostic.open_float, { desc = 'Open [D]i
 vim.keymap.set('n', '<leader>i', toggle_inlay, { desc = 'Toggle [I]nlay Hints' })
 
 -- LSP: Hovers
-vim.keymap.set('i', '<C-S>', vim.lsp.buf.signature_help, { desc = 'Signature Documentation' })
-vim.keymap.set('n', '<C-S>', vim.lsp.buf.signature_help, { desc = 'Signature Documentation' })
+local border = 'single'
+vim.keymap.set('n', 'K', function() vim.lsp.buf.hover { border = border, max_width = 140, max_height = 30 } end,
+  { desc = 'Hover' })
+vim.keymap.set('i', '<C-S>',
+  function() vim.lsp.buf.signature_help { border = border, max_width = 140, max_height = 30 } end,
+  { desc = 'Signature Documentation' })
+vim.keymap.set('n', '<C-S>',
+  function() vim.lsp.buf.signature_help { border = border, max_width = 140, max_height = 30 } end,
+  { desc = 'Signature Documentation' })
 
 -- LSP: Jumps
 vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = '[G]oto [D]efinition' })

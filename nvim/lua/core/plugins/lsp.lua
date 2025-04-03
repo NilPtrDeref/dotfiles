@@ -160,31 +160,8 @@ return {
       }
 
       local border = 'single'
-      vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover,
-        { border = border, max_width = 140, max_height = 30 })
-      vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help,
-        { border = border, max_width = 140, max_height = 30 })
       vim.diagnostic.config { float = { border = border } }
       require('lspconfig.ui.windows').default_options = { border = border }
-
-      -- -- Autohighlight hovered word
-      -- vim.api.nvim_create_autocmd('LspAttach', {
-      --   group = vim.api.nvim_create_augroup('framework-lsp-attach', { clear = true }),
-      --   callback = function(event)
-      --     local client = vim.lsp.get_client_by_id(event.data.client_id)
-      --     if client and client.server_capabilities.documentHighlightProvider then
-      --       vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
-      --         buffer = event.buf,
-      --         callback = vim.lsp.buf.document_highlight,
-      --       })
-      --
-      --       vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
-      --         buffer = event.buf,
-      --         callback = vim.lsp.buf.clear_references,
-      --       })
-      --     end
-      --   end
-      -- })
     end
   },
 
