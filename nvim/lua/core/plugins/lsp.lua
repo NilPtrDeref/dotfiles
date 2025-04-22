@@ -143,7 +143,7 @@ return {
       lspconfig.tailwindcss.setup {
         on_attach = no_templ_on_attach,
         capabilities = capabilities,
-        filetypes = { 'html', 'templ', 'svelte', 'javascript', 'typescript' },
+        filetypes = { 'html', 'templ', 'svelte', 'javascript', 'typescript', 'css' },
         init_options = { userLanguages = { templ = 'html' } },
       }
       lspconfig.lua_ls.setup {
