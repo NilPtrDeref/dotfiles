@@ -127,6 +127,13 @@ return {
         on_attach = no_templ_on_attach,
         capabilities = capabilities,
         filetypes = { 'css', 'html', 'templ' },
+        settings = {
+          css = {
+            lint = {
+              unknownAtRules = "ignore",
+            },
+          },
+        },
       }
       lspconfig.htmx.setup {
         on_attach = no_templ_on_attach,
