@@ -1,10 +1,10 @@
 # Font
-font-family = BerkeleyMono Nerd Font
-font-family-bold = BerkeleyMono Nerd Font Bold
-font-family-italic = BerkeleyMono Nerd Font Italic
-font-family-bold-italic = BerkeleyMono Nerd Font Bold Italic
-font-feature = -liga
+font-family = Berkeley Mono
+font-family-bold = Berkeley Mono Bold
+font-family-italic = Berkeley Mono Italic
+font-family-bold-italic = Berkeley Mono Bold Italic
 font-size = 9
+adjust-cell-width = -10%
 
 # Theme
 # theme = catppuccin-mocha
