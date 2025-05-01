@@ -97,6 +97,7 @@ return {
       lspconfig.svelte.setup {
         on_attach = on_attach,
         capabilities = capabilities,
+        filetypes = { 'html', 'svelte', 'javascript', 'typescript', 'css' },
       }
       lspconfig.ols.setup {
         on_attach = on_attach,
