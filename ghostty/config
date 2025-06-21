@@ -4,7 +4,7 @@ font-family-bold = Berkeley Mono Bold
 font-family-italic = Berkeley Mono Italic
 font-family-bold-italic = Berkeley Mono Bold Italic
 font-size = 9
-adjust-cell-width = -10%
+# adjust-cell-width = -10%
 
 # Theme
 # theme = catppuccin-mocha
@@ -22,3 +22,4 @@ maximize = true
 
 # Clean titlebar (Broken right now on kde)
 # gtk-titlebar = false
+keybind = shift+enter=text:\n

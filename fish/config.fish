@@ -7,6 +7,7 @@ if status is-interactive
     alias l "lazygit"
     alias y "yazi"
     alias emsdk_setup ". /home/jwood/opt/emsdk/emsdk_env.fish"
+    alias iclaude "ENABLE_IDE_INTEGRATION=true claude"
     set -Ux PYENV_ROOT $HOME/.pyenv
 
     # $HOME/opt/zls/zig-out/bin
@@ -15,3 +16,6 @@ if status is-interactive
     set EDITOR nvim
     set -Ux MANPAGER 'nvim +Man!'
 end
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/jwood/opt/google-cloud-sdk/path.fish.inc' ]; . '/home/jwood/opt/google-cloud-sdk/path.fish.inc'; end
