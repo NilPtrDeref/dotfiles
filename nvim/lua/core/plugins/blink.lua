@@ -43,6 +43,7 @@ return {
       -- (Default) Only show the documentation popup when manually triggered
       completion = {
         list = {
+          max_items = 500,
           selection = {
             auto_insert = false,
           },
@@ -52,10 +53,14 @@ return {
           draw = {
             columns = { { "kind_icon", "kind" }, { "label", "label_description" } },
           },
+          max_height = 50,
+          min_width = 40,
         },
         documentation = {
           window = {
             border = "rounded",
+            max_width = 500,
+            max_height = 50,
           },
           auto_show = true,
         },
