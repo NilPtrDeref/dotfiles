@@ -1,0 +1,12 @@
+BreakBeforeBraces: Linux
+ColumnLimit: 140
+AlwaysBreakBeforeMultilineStrings: true
+IndentCaseBlocks: false
+IndentCaseLabels: false
+KeepEmptyLines:
+  AtEndOfFile: false
+  AtStartOfBlock: false
+  AtStartOfFile: false
+SortIncludes: true
+AllowShortIfStatementsOnASingleLine: WithoutElse
+AllowShortLoopsOnASingleLine: true
