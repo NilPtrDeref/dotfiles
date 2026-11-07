@@ -1,5 +1,3 @@
--- Neovim configuration (single file)
---
 -- Sections:
 --   1. Options & autocmds
 --   2. Plugin manager bootstrap (lazy.nvim)
@@ -16,7 +14,6 @@ vim.opt.number = true
 vim.opt.relativenumber = false
 vim.opt.mouse = 'a'
 vim.opt.showmode = false
--- vim.opt.clipboard = 'unnamedplus'
 vim.opt.breakindent = true
 vim.opt.undofile = true
 vim.opt.ignorecase = true
@@ -42,7 +39,7 @@ vim.opt.wrap = true
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.autoread = true
-vim.opt.confirm = true -- ask to save instead of erroring on :q, :e, etc. with unsaved changes
+vim.opt.confirm = true        -- ask to save instead of erroring on :q, :e, etc. with unsaved changes
 vim.opt.winborder = 'rounded' -- default border for floating windows that don't set one
 
 -- Set up templ
@@ -90,6 +87,22 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = vim.api.nvim_create_augroup('framework-highlight-yank', { clear = true }),
   callback = function()
     vim.highlight.on_yank()
+  end,
+})
+
+-- Reopen files at the last cursor position (Neovim remembers it in the shada file)
+vim.api.nvim_create_autocmd('BufReadPost', {
+  desc = 'Restore last cursor position',
+  group = vim.api.nvim_create_augroup('restore-cursor', { clear = true }),
+  callback = function(args)
+    local ft = vim.bo[args.buf].filetype
+    if ft:match 'commit' or ft == 'gitrebase' then
+      return -- always start at the top of commit messages
+    end
+    local mark = vim.api.nvim_buf_get_mark(args.buf, '"') -- position when the buffer was last left
+    if mark[1] > 0 and mark[1] <= vim.api.nvim_buf_line_count(args.buf) then
+      pcall(vim.api.nvim_win_set_cursor, 0, mark)
+    end
   end,
 })
 
@@ -188,144 +201,42 @@ require('lazy').setup({
   -- Colorscheme
   ------------------------------------------------------------------
   {
-    'rebelot/kanagawa.nvim',
-    dependencies = {
-      -- 'Shatur/neovim-ayu',
-      -- 'jake-wilcox/afterglow.nvim',
-      -- 'catppuccin/nvim',
-      -- 'rose-pine/neovim',
-      -- 'stevearc/nightfox.nvim',
-      -- 'sainnhe/sonokai',
-      -- 'sainnhe/everforest',
-      -- 'folke/tokyonight.nvim',
-      -- 'morhetz/gruvbox',
-      -- 'sainnhe/gruvbox-material',
-      -- 'AlexvZyl/nordic.nvim',
-      -- 'doums/darcula',
-      -- 'rktjmp/lush.nvim',
-      -- 'ab-dx/ares.nvim',
-    },
+    'neanias/everforest-nvim',
     lazy = false,
     priority = 1000,
     config = function()
-      require('kanagawa').setup {
-        compile = false,
-        undercurl = true,
-        commentStyle = { italic = true },
-        functionStyle = {},
-        keywordStyle = { italic = true },
-        statementStyle = { bold = true },
-        typeStyle = {},
-        transparent = true,
-        dimInactive = false,
-        terminalColors = true,
-        colors = {
-          palette = {},
-          theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
-        },
-        overrides = function(colors)
-          local theme = colors.theme
-          local makeDiagnosticColor = function(color)
-            local c = require 'kanagawa.lib.color'
-            return { fg = color, bg = c(color):blend(theme.ui.bg, 0.95):to_hex() }
-          end
+      require('everforest').setup {
+        background = 'medium',            -- "soft" | "medium" | "hard"
+        transparent_background_level = 2, -- 2 = also status line, tab line, etc.
+        float_style = 'blend',            -- floating windows take the (transparent) Normal background
+        italics = true,
+        show_eob = false,
+        on_highlights = function(hl, p)
+          -- Popup menu (completion, cmdline completion): transparent instead of a solid bar
+          hl.Pmenu = { fg = p.fg, bg = p.none }
+          hl.PmenuSbar = { fg = p.none, bg = p.none }
+          hl.WhichKeyFloat = { fg = p.none, bg = p.none }
 
-          return {
-            NormalFloat = { bg = 'NONE', blend = vim.o.pumblend },
-            FloatBorder = { bg = 'NONE', blend = vim.o.pumblend },
-            FloatTitle = { bg = 'NONE', blend = vim.o.pumblend },
-            NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },
-            LazyNormal = { fg = theme.ui.fg_dim, bg = 'NONE', blend = vim.o.pumblend },
-            MasonNormal = { fg = theme.ui.fg_dim, bg = 'NONE', blend = vim.o.pumblend },
-            LineNr = { bg = 'NONE', blend = vim.o.pumblend },
-            CursorLine = { bg = theme.ui.shade0 },
-            CursorLineNr = { fg = colors.palette.carpYellow, bg = 'NONE', blend = vim.o.pumblend },
-            SignColumn = { bg = 'NONE', blend = vim.o.pumblend },
-            GitSignsAdd = { bg = 'NONE', blend = vim.o.pumblend },
-            GitSignsChange = { bg = 'NONE', blend = vim.o.pumblend },
-            GitSignsDelete = { bg = 'NONE', blend = vim.o.pumblend },
+          -- Tabline (mini.tabline): transparent, current tab highlighted with an accent underline
+          hl.TabLine = { fg = p.grey1, bg = p.none }
+          hl.TabLineSel = { fg = p.fg, bg = p.bg2, bold = true }
+          hl.MiniTablineHidden = { fg = p.grey1, bg = p.none }
+          hl.MiniTablineVisible = { fg = p.grey2, bg = p.none }
+          hl.MiniTablineCurrent = { fg = p.fg, bg = p.bg2, bold = true, underline = true, sp = p.green }
+          hl.MiniTablineModifiedHidden = { fg = p.yellow, bg = p.none }
+          hl.MiniTablineModifiedVisible = { fg = p.yellow, bg = p.none }
+          hl.MiniTablineModifiedCurrent = { fg = p.yellow, bg = p.bg2, bold = true, underline = true, sp = p.green }
 
-            TelescopeTitle = { fg = colors.palette.carpYellow, bold = true },
-            TelescopePromptNormal = { bg = 'NONE', blend = vim.o.pumblend },
-            TelescopePromptBorder = { fg = colors.palette.autumnGreen, bg = 'NONE', blend = vim.o.pumblend },
-            TelescopeResultsNormal = { fg = colors.palette.fujiWhite, bg = 'NONE', blend = vim.o.pumblend },
-            TelescopeResultsBorder = { fg = colors.palette.autumnGreen, bg = 'NONE', blend = vim.o.pumblend },
-            TelescopePreviewNormal = { bg = 'NONE', blend = vim.o.pumblend },
-            TelescopePreviewBorder = { fg = colors.palette.autumnGreen, bg = 'NONE', blend = vim.o.pumblend },
+          -- Statusline: the bar itself is transparent (the pills draw their own backgrounds)
+          hl.MiniStatuslineFilename = { fg = p.grey1, bg = p.none }
 
-            DiagnosticVirtualTextHint = makeDiagnosticColor(theme.diag.hint),
-            DiagnosticVirtualTextInfo = makeDiagnosticColor(theme.diag.info),
-            DiagnosticVirtualTextWarn = makeDiagnosticColor(theme.diag.warning),
-            DiagnosticVirtualTextError = makeDiagnosticColor(theme.diag.error),
-            DiagnosticSignHint = { bg = 'NONE', blend = vim.o.pumblend },
-            DiagnosticSignInfo = { bg = 'NONE', blend = vim.o.pumblend },
-            DiagnosticSignWarn = { bg = 'NONE', blend = vim.o.pumblend },
-            DiagnosticSignError = { bg = 'NONE', blend = vim.o.pumblend },
-
-            BlinkCmpMenu = { fg = theme.ui.fg_dim, bg = 'NONE', blend = vim.o.pumblend },
-            BlinkCmpMenuBorder = { fg = colors.palette.carpYellow, bg = 'NONE', blend = vim.o.pumblend },
-            BlinkCmpMenuSelection = { fg = colors.palette.roninYellow, bg = theme.ui.bg_p1 },
-            BlinkCmpKind = { fg = colors.palette.roninYellow },
-            BlinkCmpDoc = { fg = theme.ui.fg_dim, bg = 'NONE', blend = vim.o.pumblend },
-            BlinkCmpDocBorder = { fg = colors.palette.carpYellow, bg = 'NONE', blend = vim.o.pumblend },
-            BlinkCmpDocSeparator = { fg = colors.palette.carpYellow, bg = 'NONE', blend = vim.o.pumblend },
-            BlinkCmpSignatureHelp = { fg = theme.ui.fg_dim, bg = 'NONE', blend = vim.o.pumblend },
-            BlinkCmpSignatureHelpBorder = { fg = colors.palette.carpYellow, bg = 'NONE', blend = vim.o.pumblend },
-            Pmenu = { fg = theme.ui.pmenu.fg, bg = 'NONE', blend = vim.o.pumblend },
-            PmenuSel = { fg = 'NONE', bg = theme.ui.bg_p2 },
-            PmenuSbar = { bg = theme.ui.bg_m1 },
-            PmenuThumb = { bg = colors.palette.roninYellow },
-            -- Keep the popup menu's extra columns in line with Pmenu/PmenuSel
-            PmenuKind = { bg = 'NONE', blend = vim.o.pumblend },
-            PmenuExtra = { bg = 'NONE', blend = vim.o.pumblend },
-            PmenuKindSel = { bg = theme.ui.bg_p2 },
-            PmenuExtraSel = { bg = theme.ui.bg_p2 },
-            BlinkCmpScrollBarGutter = { bg = 'NONE', blend = vim.o.pumblend },
-
-            -- Noice confirm popup ("Save changes?"): its choice buttons linked to opaque CursorLine/Visual
-            NoiceConfirm = { bg = 'NONE', blend = vim.o.pumblend },
-            NoiceFormatConfirm = { fg = theme.ui.fg_dim, bg = 'NONE', blend = vim.o.pumblend },
-            NoiceFormatConfirmDefault = { fg = colors.palette.carpYellow, bg = 'NONE', bold = true, blend = vim.o.pumblend },
-
-            -- Tabline (mini.tabline): transparent, with the current buffer subtly highlighted
-            TabLine = { fg = theme.ui.special, bg = 'NONE', blend = vim.o.pumblend },
-            TabLineFill = { bg = 'NONE', blend = vim.o.pumblend },
-            TabLineSel = { fg = theme.ui.fg, bg = theme.ui.bg_p1, bold = true },
-            MiniTablineFill = { bg = 'NONE', blend = vim.o.pumblend },
-            -- Hidden tabs were nearly unreadable (contrast 2.6); Visible was bold like Current
-            MiniTablineHidden = { fg = theme.ui.special, bg = 'NONE', blend = vim.o.pumblend },
-            MiniTablineVisible = { fg = theme.ui.fg_dim, bg = 'NONE', bold = false, blend = vim.o.pumblend },
-            MiniTablineCurrent = { fg = theme.ui.fg, bg = theme.ui.bg_p1, bold = true, underline = true, sp = colors.palette.crystalBlue },
-            MiniTablineModifiedHidden = { fg = colors.palette.carpYellow, bg = 'NONE', blend = vim.o.pumblend },
-            MiniTablineModifiedVisible = { fg = colors.palette.carpYellow, bg = 'NONE', blend = vim.o.pumblend },
-            MiniTablineModifiedCurrent = { fg = colors.palette.carpYellow, bg = theme.ui.bg_p1, bold = true, underline = true, sp = colors.palette.crystalBlue },
-
-            -- Other groups that kept an opaque background
-            TelescopeBorder = { bg = 'NONE', blend = vim.o.pumblend },
-            FloatFooter = { bg = 'NONE', blend = vim.o.pumblend },
-            MsgSeparator = { bg = 'NONE', blend = vim.o.pumblend },
-            FoldColumn = { bg = 'NONE', blend = vim.o.pumblend },
-            CursorLineFold = { bg = 'NONE', blend = vim.o.pumblend },
-            StatusLine = { bg = 'NONE', blend = vim.o.pumblend },
-            StatusLineNC = { bg = 'NONE', blend = vim.o.pumblend },
-            MiniStatuslineFilename = { bg = 'NONE', blend = vim.o.pumblend },
-            -- Overriding the link dropped its text colour, so inactive windows looked active
-            MiniStatuslineInactive = { fg = theme.ui.special, bg = 'NONE', blend = vim.o.pumblend },
-
-            RenderMarkdownCode = { bg = 'NONE', blend = vim.o.pumblend },
-            ColorColumn = { bg = 'NONE', blend = vim.o.pumblend },
-            RenderMarkdownCodeInline = { bg = 'NONE', blend = vim.o.pumblend },
-            mkdLineBreak = { bg = 'NONE', blend = vim.o.pumblend },
-          }
+          -- Noice confirm popup ("Save changes?"): choice buttons linked to opaque CursorLine/Visual
+          hl.NoiceFormatConfirm = { fg = p.grey2, bg = p.none }
+          hl.NoiceFormatConfirmDefault = { fg = p.yellow, bg = p.none, bold = true }
         end,
-        theme = 'wave',
-        background = {
-          dark = 'wave',
-          light = 'lotus',
-        },
       }
-      vim.cmd.colorscheme 'kanagawa'
-      vim.cmd.hi 'Comment gui=none'
+      vim.o.background = 'dark'
+      vim.cmd.colorscheme 'everforest'
     end,
   },
 
@@ -1073,7 +984,13 @@ require('lazy').setup({
       local nr = vim.fn.nr2char
       local cap_l, cap_r = nr(0xe0b6), nr(0xe0b4) -- rounded pill ends
       local diag_icons = { Error = nr(0xf015a), Warn = nr(0xf0026), Info = nr(0xf02fc), Hint = nr(0xf0335) }
-      local diag_hl = { Error = 'DiagnosticError', Warn = 'DiagnosticWarn', Info = 'DiagnosticInfo', Hint = 'DiagnosticHint' }
+      local diag_hl = {
+        Error = 'DiagnosticError',
+        Warn = 'DiagnosticWarn',
+        Info = 'DiagnosticInfo',
+        Hint =
+        'DiagnosticHint'
+      }
 
       -- Pill ends need fg = the pill's background and a transparent bg. Derived from the
       -- current colorscheme, so (re)build them lazily and whenever the colorscheme changes.
