@@ -767,7 +767,10 @@ require('lazy').setup({
     config = function()
       require('telescope').setup {
         defaults = {
+          -- Search box at the top, with results listed downward beneath it
+          sorting_strategy = 'ascending',
           layout_config = {
+            prompt_position = 'top',
             -- Preview gets 60% of the picker, the results list 40%
             -- (the default is the reverse on windows under 150 columns)
             horizontal = { preview_width = 0.6 },
