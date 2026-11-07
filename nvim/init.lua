@@ -1208,10 +1208,10 @@ require('lazy').setup({
     version = '*',
     config = function()
       local Terminal = require('toggleterm.terminal').Terminal
-      local fish = Terminal:new { cmd = 'fish', hidden = true, direction = 'float' }
+      local fish = Terminal:new { cmd = 'fish', hidden = true, direction = 'horizontal' }
 
       function _fish_toggle()
-        fish:toggle(20)
+        fish:toggle(40)
       end
 
       vim.keymap.set('n', '<C-t>', '<cmd>lua _fish_toggle()<CR>', { desc = 'Open a terminal under the current window' })
