@@ -257,7 +257,6 @@ require('lazy').setup({
     'saghen/blink.cmp',
     dependencies = {
       'rafamadriz/friendly-snippets',
-      'giuxtaposition/blink-cmp-copilot',
     },
     -- use a release tag to download pre-built binaries
     version = '1.*',
@@ -265,7 +264,7 @@ require('lazy').setup({
     ---@type blink.cmp.Config
     opts = {
       sources = {
-        default = { 'lsp', 'snippets', 'path', 'copilot', 'buffer' },
+        default = { 'lsp', 'snippets', 'path', 'buffer' },
         providers = {
           lsp = {
             name = 'lsp',
@@ -309,7 +308,6 @@ require('lazy').setup({
         use_nvim_cmp_as_default = true,
         nerd_font_variant = 'mono',
         kind_icons = {
-          Copilot = '',
           Text = '󰉿',
           Method = '󰊕',
           Function = '󰊕',
