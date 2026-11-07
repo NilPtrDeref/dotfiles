@@ -39,6 +39,8 @@ vim.opt.wrap = true
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.autoread = true
+-- Split borders. stlnc draws inactive statuslines as a line, which is the border between stacked splits
+vim.opt.fillchars:append { vert = '│', horiz = '─', horizup = '┴', horizdown = '┬', vertleft = '┤', vertright = '├', verthoriz = '┼', stlnc = '─' }
 vim.opt.confirm = true        -- ask to save instead of erroring on :q, :e, etc. with unsaved changes
 vim.opt.winborder = 'rounded' -- default border for floating windows that don't set one
 
@@ -97,7 +99,7 @@ vim.api.nvim_create_autocmd('BufReadPost', {
   callback = function(args)
     local ft = vim.bo[args.buf].filetype
     if ft:match 'commit' or ft == 'gitrebase' then
-      return -- always start at the top of commit messages
+      return                                              -- always start at the top of commit messages
     end
     local mark = vim.api.nvim_buf_get_mark(args.buf, '"') -- position when the buffer was last left
     if mark[1] > 0 and mark[1] <= vim.api.nvim_buf_line_count(args.buf) then
@@ -217,6 +219,11 @@ require('lazy').setup({
           hl.PmenuSbar = { fg = p.none, bg = p.none }
           hl.WhichKeyFloat = { fg = p.none, bg = p.none }
 
+          -- Borders between splits: the default colour (bg4) is nearly invisible on a transparent background
+          hl.VertSplit = { fg = p.grey0, bg = p.none }
+          hl.WinSeparator = { fg = p.grey0, bg = p.none }
+          hl.MiniStatuslineInactive = { fg = p.grey0, bg = p.none }
+
           -- Tabline (mini.tabline): transparent, current tab highlighted with an accent underline
           hl.TabLine = { fg = p.grey1, bg = p.none }
           hl.TabLineSel = { fg = p.fg, bg = p.bg2, bold = true }
@@ -282,23 +289,6 @@ require('lazy').setup({
             score_offset = 900,
             max_items = 3,
             fallbacks = { 'buffer' },
-          },
-          copilot = {
-            name = 'copilot',
-            enabled = true,
-            module = 'blink-cmp-copilot',
-            score_offset = 800,
-            async = true,
-            fallbacks = { 'buffer' },
-            transform_items = function(_, items)
-              local CompletionItemKind = require('blink.cmp.types').CompletionItemKind
-              local kind_idx = #CompletionItemKind + 1
-              CompletionItemKind[kind_idx] = 'Copilot'
-              for _, item in ipairs(items) do
-                item.kind = kind_idx
-              end
-              return items
-            end,
           },
           buffer = {
             name = 'buffer',
@@ -391,56 +381,6 @@ require('lazy').setup({
       fuzzy = { implementation = 'prefer_rust_with_warning' },
     },
     opts_extend = { 'sources.default' },
-  },
-
-  ------------------------------------------------------------------
-  -- Copilot
-  ------------------------------------------------------------------
-  {
-    'zbirenbaum/copilot.lua',
-    opts = {
-      suggestion = { enabled = false },
-      panel = { enabled = false },
-      filetypes = {
-        markdown = true,
-        help = true,
-      },
-    },
-  },
-  {
-    'CopilotC-Nvim/CopilotChat.nvim',
-    enabled = vim.g.neovim_mode ~= 'skitty', -- Disable for skitty mode
-    opts = function(_, opts)
-      opts = opts or {}
-
-      -- Format username
-      local user = (vim.env.USER or 'User'):gsub('^%l', string.upper)
-      opts.question_header = string.format(' %s (%s) ', user, opts.model)
-
-      -- Configure mappings
-      opts.mappings = {
-        close = {
-          normal = '',
-          insert = '',
-        },
-        reset = {
-          normal = '',
-          insert = '',
-        },
-      }
-
-      return opts
-    end,
-    keys = {
-      {
-        '<A-o>',
-        function()
-          return require('CopilotChat').toggle()
-        end,
-        desc = 'Toggle Copilot Chat',
-        mode = { 'n', 'i', 'v' },
-      },
-    },
   },
 
   ------------------------------------------------------------------
@@ -650,6 +590,21 @@ require('lazy').setup({
       local ts = require 'nvim-treesitter'
       ts.setup {}
 
+      -- Custom parser for `go doc` output (used by :GoDoc), which injects Go highlighting into code regions
+      local godoc_parser = {
+        install_info = {
+          url = 'https://github.com/fredrikaverpil/tree-sitter-godoc',
+          revision = 'v0.1.0',
+        },
+      }
+      require('nvim-treesitter.parsers').godoc = godoc_parser
+      vim.api.nvim_create_autocmd('User', {
+        pattern = 'TSUpdate', -- re-register after parser lists reload
+        callback = function()
+          require('nvim-treesitter.parsers').godoc = godoc_parser
+        end,
+      })
+
       -- Parsers to keep installed (async; no-op for ones already present)
       ts.install {
         'go',
@@ -680,6 +635,7 @@ require('lazy').setup({
         'css',
         'templ',
         'tsx',
+        'godoc',
       }
 
       -- Enable highlighting + treesitter indent per buffer, and install a
@@ -750,9 +706,23 @@ require('lazy').setup({
     },
     -- build = "go install github.com/lotusirous/gostdsym/stdsym@latest",
     cmd = { 'GoDoc' },
+    keys = {
+      { '<leader>sD', '<cmd>GoDoc<cr>', desc = '[S]earch Go [D]oc' },
+    },
     opts = {
       picker = {
         type = 'telescope',
+      },
+      adapters = {
+        {
+          name = 'go',
+          opts = {
+            -- highlight docs with the godoc tree-sitter parser (Go code blocks use the Go parser)
+            get_syntax_info = function()
+              return { filetype = 'godoc', language = 'godoc' }
+            end,
+          },
+        },
       },
     },
   },
@@ -1342,3 +1312,33 @@ vim.keymap.set('n', '<leader>ws', telescope_builtin.lsp_dynamic_workspace_symbol
 vim.keymap.set('n', 'gi', telescope_builtin.lsp_implementations, { desc = '[G]et [I]mplementation' })
 vim.keymap.set('n', 'gI', telescope_builtin.lsp_incoming_calls, { desc = '[G]et [I]ncoming Calls' })
 vim.keymap.set('n', 'gO', telescope_builtin.lsp_outgoing_calls, { desc = '[G]et [O]utgoing Calls' })
+
+-- Goto: symbols
+vim.keymap.set('n', 'gs', telescope_builtin.lsp_document_symbols, { desc = '[G]oto document [S]ymbol' })
+vim.keymap.set('n', 'gS', telescope_builtin.lsp_dynamic_workspace_symbols, { desc = '[G]oto workspace [S]ymbol' })
+
+-- Goto: diagnostics by severity (]d / [d above jump to any severity)
+local severity = vim.diagnostic.severity
+vim.keymap.set('n', ']e', function()
+  vim.diagnostic.jump { count = 1, severity = severity.ERROR, float = true }
+end, { desc = 'Go to next [E]rror' })
+vim.keymap.set('n', '[e', function()
+  vim.diagnostic.jump { count = -1, severity = severity.ERROR, float = true }
+end, { desc = 'Go to previous [E]rror' })
+vim.keymap.set('n', ']w', function()
+  vim.diagnostic.jump { count = 1, severity = severity.WARN, float = true }
+end, { desc = 'Go to next [W]arning' })
+vim.keymap.set('n', '[w', function()
+  vim.diagnostic.jump { count = -1, severity = severity.WARN, float = true }
+end, { desc = 'Go to previous [W]arning' })
+
+-- Goto: git hunks (gitsigns)
+vim.keymap.set('n', ']h', function()
+  require('gitsigns').nav_hunk 'next'
+end, { desc = 'Go to next git [H]unk' })
+vim.keymap.set('n', '[h', function()
+  require('gitsigns').nav_hunk 'prev'
+end, { desc = 'Go to previous git [H]unk' })
+
+-- Goto: last edit
+vim.keymap.set('n', 'gl', '`.', { desc = '[G]oto [L]ast edit position' })
