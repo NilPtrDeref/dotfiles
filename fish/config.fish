@@ -14,8 +14,6 @@ if status is-interactive
     set fish_user_paths $HOME/Opt/zig/build/stage3/bin $fish_user_paths
     set fish_user_paths $HOME/.local/bin $fish_user_paths
     set fish_user_paths $HOME/Opt/zig/build/stage3/bin $fish_user_paths
-    # set fish_user_paths $HOME/Opt/zig-0.16.0-dev $fish_user_paths
-    # set fish_user_paths $HOME/Opt/zig-0.15.2 $fish_user_paths
 
     set EDITOR nvim
     set -Ux MANPAGER 'nvim +Man!'
