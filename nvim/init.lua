@@ -1150,6 +1150,27 @@ require('lazy').setup({
       { '<C-g>', '<cmd>LazyGit<cr>', desc = 'LazyGit' },
     },
   },
+  {
+    'sindrets/diffview.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    cmd = {
+      'DiffviewOpen',
+      'DiffviewClose',
+      'DiffviewToggleFiles',
+      'DiffviewFocusFiles',
+      'DiffviewRefresh',
+      'DiffviewFileHistory',
+    },
+    keys = {
+      { '<leader>vd', '<cmd>DiffviewOpen<cr>', desc = '[V]ersion control: [D]iff working tree' },
+      { '<leader>vh', '<cmd>DiffviewFileHistory %<cr>', desc = '[V]ersion control: file [H]istory' },
+      { '<leader>vH', '<cmd>DiffviewFileHistory<cr>', desc = '[V]ersion control: branch [H]istory' },
+      { '<leader>vq', '<cmd>DiffviewClose<cr>', desc = '[V]ersion control: [Q]uit diffview' },
+    },
+    opts = {
+      enhanced_diff_hl = true, -- better diff highlight groups
+    },
+  },
 
   ------------------------------------------------------------------
   -- UI
@@ -1199,6 +1220,7 @@ require('lazy').setup({
         { '<leader>r',  group = '[R]ename' },
         { '<leader>s',  group = '[S]earch' },
         { '<leader>sc', group = '[C]olorschemes / [C]ommands' },
+        { '<leader>v',  group = '[V]ersion control' },
         { '<leader>w',  group = '[W]orkspace' },
       },
     },
