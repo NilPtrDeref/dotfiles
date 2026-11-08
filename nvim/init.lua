@@ -14,6 +14,7 @@ vim.opt.number = true
 vim.opt.relativenumber = false
 vim.opt.mouse = 'a'
 vim.opt.showmode = false
+vim.opt.clipboard = 'unnamedplus' -- yank/delete/paste use the system clipboard (via wl-clipboard on Wayland)
 vim.opt.breakindent = true
 vim.opt.undofile = true
 vim.opt.ignorecase = true
